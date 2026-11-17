@@ -82,8 +82,8 @@ Note: this table follows the standard RISC-V single-cycle datapath. I have not s
 ## E2 Neighbour review
 Review the pull requests of P18 (Immediate generator I/S) and P20 (Immediate selector).
 
-- P18 review comments:Not available. P18 has not submitted a pull request yet
-- P20 review comments: Not available. P20 has not submitted a pull request yet
+- P18 review comments:https://github.com/campus-sutra/rc-v/issues/42#issuecomment-6953327874
+- P20 review comments: https://github.com/campus-sutra/rc-v/issues/43#issuecomment-6953408676
 
 ## E3 Where my block sits
 My block sits in the **datapath** layer, in the decode part. It is fed by the instruction memory (fetch) through the 32-bit instruction word. Its three outputs go to the immediate selector (P20), which picks one immediate for the ALU or the PC adder.
