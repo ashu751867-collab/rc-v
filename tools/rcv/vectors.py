@@ -178,6 +178,7 @@ def device_inputs(rng, ins, pkg_id, prev):
 class Rows:
     def __init__(self, ins, outs, clocked):
         self.ins, self.outs, self.clocked, self.rows = ins, outs, clocked, []
+        self.pre = []   # devices: rdata expected BEFORE the clock edge (it must be combinational)
 
 
 def make_rows(pkg, variant, seed, n=None):
@@ -224,6 +225,9 @@ def make_rows(pkg, variant, seed, n=None):
         if "btn" in names and k > 0:
             i["btn"] = int(rng.random() < 0.05)
         i["clk"] = "C"
+        if is_device:
+            # nothing is known before the first reset edge, so row 1 has no before-edge check
+            R.pre.append(None if k == 0 else blk.outputs(i).get("rdata"))
         blk.clock(i)
         R.rows.append((i, blk.outputs(i)))
         prev = i

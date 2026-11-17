@@ -76,6 +76,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh pr merge ${{ steps.pr.outputs.number }} --merge
+          # GitHub's API sometimes fails for a moment ("Something went wrong"): retry
+          for i in 1 2 3 4 5; do
+            gh pr merge ${{ steps.pr.outputs.number }} --merge && break
+            [ "$i" = 5 ] && exit 1
+            sleep $((i * 20))
+          done
           # a merge made with this token does not trigger board.yml by itself
           gh workflow run board.yml --repo "${{ github.repository }}"

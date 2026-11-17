@@ -25,10 +25,25 @@ jobs:
 
       # The checker itself always comes from main, never from the pull request.
       - name: Trusted tools from main
-        run: git worktree add -q /tmp/base "${{ github.event.pull_request.base.sha || github.sha }}"
+        run: |
+          git fetch -q origin main
+          git worktree add -q /tmp/base origin/main      # latest checker, even on a re-run
+
+      # Written first, so a student always gets a comment even if setup fails.
+      - name: Placeholder report
+        run: |
+          mkdir -p report
+          echo '{"packages": [], "problems": ["The checker could not start because GitHub had a temporary network problem. Nothing is wrong with your work: push again (or ask your teacher to re-run the check) in a few minutes."]}' > report/gate.json
+          echo "" > report/check.md
+
+      - name: Cache Icarus Verilog
+        uses: actions/cache@v4
+        with:
+          path: ~/iverilog-debs
+          key: iverilog-12-noble
 
       - name: Install Icarus Verilog
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq iverilog > /dev/null
+        run: sh /tmp/base/tools/ci/install_iverilog.sh
 
       - name: Cache Digital
         id: digital

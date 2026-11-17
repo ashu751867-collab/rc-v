@@ -9,7 +9,11 @@ module p30_boot_rom #(parameter INIT_FILE = "boot.hex") (
     output wire [31:0] ddata
 );
 
-    assign idata = 32'd0;   // placeholder
-    assign ddata = 32'd0;   // placeholder
+    reg [31:0] mem [0:16383];
+
+    initial $readmemh(INIT_FILE, mem);
+
+    assign idata = mem[iaddr];
+    assign ddata = mem[daddr];
 
 endmodule

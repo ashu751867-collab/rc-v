@@ -18,17 +18,20 @@ module p21_opclass_dec (
     output wire is_mret
 );
 
-    assign is_lui = 1'd0;   // placeholder
-    assign is_auipc = 1'd0;   // placeholder
-    assign is_jal = 1'd0;   // placeholder
-    assign is_jalr = 1'd0;   // placeholder
-    assign is_branch = 1'd0;   // placeholder
-    assign is_load = 1'd0;   // placeholder
-    assign is_store = 1'd0;   // placeholder
-    assign is_opimm = 1'd0;   // placeholder
-    assign is_op = 1'd0;   // placeholder
-    assign is_system = 1'd0;   // placeholder
-    assign is_ecall = 1'd0;   // placeholder
-    assign is_mret = 1'd0;   // placeholder
+    wire [6:0] opcode = instr[6:0];
+
+    assign is_lui    = (opcode == 7'b0110111);
+    assign is_auipc  = (opcode == 7'b0010111);
+    assign is_jal    = (opcode == 7'b1101111);
+    assign is_jalr   = (opcode == 7'b1100111);
+    assign is_branch = (opcode == 7'b1100011);
+    assign is_load   = (opcode == 7'b0000011);
+    assign is_store  = (opcode == 7'b0100011);
+    assign is_opimm  = (opcode == 7'b0010011);
+    assign is_op     = (opcode == 7'b0110011);
+    assign is_system = (opcode == 7'b1110011);
+
+    assign is_ecall  = (instr == 32'h00000073);
+    assign is_mret   = (instr == 32'h30200073);
 
 endmodule

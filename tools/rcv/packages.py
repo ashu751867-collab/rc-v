@@ -230,8 +230,10 @@ PACKAGES = [
       "16384-word (64 KB) read-only memory with two read ports (instructions and constants). Its contents come "
       "from the file named by parameter INIT_FILE ($readmemh).",
       DIG("in addr:4, out data:32", "bootrom", ROM,
-          "A ROM part holding the first 16 words of the start-up program sw/lib/crt0.s. You assemble "
-          "the program and type the machine code in yourself.")),
+          "A ROM part holding the first 16 words of the boot program: sw/lib/crt0.s followed by "
+          "sw/lib/boot_main.s and sw/lib/rcv_lib.s, assembled together (crt0's la instructions depend "
+          "on what follows it). Assemble it (by hand or with tools/rcv/asm.py) and type the machine "
+          "code into the ROM yourself.")),
     P(31, "addr_decode", "Address decoder (memory map)", "D", [2, 6], 2,
       "in addr:32, out sel_rom, out sel_ram, out sel_io, out dev:5, out ridx:4", B.addr_decode,
       "ROM 0x00000000-0x0000FFFF, RAM 0x00010000-0x00013FFF, I/O 0x00020000-0x000207FF "

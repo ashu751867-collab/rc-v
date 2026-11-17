@@ -97,7 +97,18 @@ def verilog_tb(p, rows):
     for k, (i, o) in enumerate(rows.rows):
         sets = " ".join(f"{n} = {vlit(i[n], w)};" for _, n, w in ins if n != "clk")
         L.append(f"        {sets}")
-        L.append("        #1 clk = 1; #1 clk = 0; #1;" if rows.clocked else "        #1;")
+        if rows.pre:
+            # a device's rdata must already be right before the clock edge (the CPU reads it in the same cycle)
+            ev = rows.pre[k]
+            if ev is None:
+                L.append("        #1 clk = 1; #1 clk = 0; #1;")
+            else:
+              L.append(f"        #1; checks = checks + 1; if (rdata !== {vlit(ev, 32)}) begin errors = errors + 1; "
+                     f"if (errors <= 20) $display(\"row {k + 1}: rdata = %h before the clock edge, expected %h "
+                     f"(rdata must not wait for the clock)\", rdata, {vlit(ev, 32)}); end")
+              L.append("        clk = 1; #1 clk = 0; #1;")
+        else:
+            L.append("        #1 clk = 1; #1 clk = 0; #1;" if rows.clocked else "        #1;")
         for _, n, w in outs:
             ev = o.get(n)
             if ev is None:
@@ -189,7 +200,9 @@ def digital_tests(testdata, label="public tests"):
 
 
 def bootrom_dig_tests():
-    res = assemble_files([ROOT / "sw/lib/crt0.s", ROOT / "sw/lib/rcv_lib.s"])
+    res = assemble_files([ROOT / "sw/lib/crt0.s", ROOT / "sw/lib/boot_main.s", ROOT / "sw/lib/rcv_lib.s"])
+    if res["errors"]:
+        raise SystemExit("boot ROM program does not assemble: " + "; ".join(res["errors"]))
     words = [res["rom"].get(4 * k, 0) for k in range(16)]
     lines = ["addr data"] + [f"{k} {w}" for k, w in enumerate(words)]
     return "\n".join(lines), words

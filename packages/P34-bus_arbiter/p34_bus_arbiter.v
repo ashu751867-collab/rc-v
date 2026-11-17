@@ -19,11 +19,11 @@ module p34_bus_arbiter (
     output wire [3:0] be
 );
 
-    assign grant = 1'd0;   // placeholder
-    assign stall = 1'd0;   // placeholder
-    assign addr = 32'd0;   // placeholder
-    assign wdata = 32'd0;   // placeholder
-    assign we = 1'd0;   // placeholder
-    assign be = 4'd0;   // placeholder
+    assign grant = dma_req;
+    assign stall = dma_req;
+    assign addr = dma_req ? dma_addr : cpu_addr;
+    assign wdata = dma_req ? dma_wdata : cpu_wdata;
+    assign we = dma_req ? dma_we : cpu_we;
+    assign be = dma_req ? 4'hF : cpu_be;
 
 endmodule

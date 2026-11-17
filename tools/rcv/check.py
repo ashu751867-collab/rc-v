@@ -90,7 +90,8 @@ def check_digital(p, f, jar):
     except ET.ParseError as e:
         return "fail", [f"{path.name} is not a valid Digital file: {e}"]
     logic = [n for n in names if n not in WIRING]
-    if not logic:
+    wires = len(list(ET.parse(path).getroot().iter("wire")))
+    if not logic and (p["dig"]["parts"] != "wiring" or wires == 0):
         return "not started", ["no parts placed yet"]
     want = {n: (d, w) for d, n, w in parse_ports(p["dig"]["ports"])}
     for n, (d, w) in want.items():
@@ -196,7 +197,9 @@ def check_dossier(p, f):
             empty.append(h)
             continue
         extra = set(re.findall(r"\w+", got[h].lower())) - set(re.findall(r"\w+", tsec[h].lower()))
-        if len(extra) < 8 and h != "E4":
+        # E4 is a checklist; E2 (reviews) depends on partners' pull requests, so it is
+        # marked at the end as teamwork and does not block a merge
+        if len(extra) < 8 and h not in ("E2", "E4"):
             empty.append(h)
     if empty:
         return "fail", [f"sections not answered yet: {', '.join(empty)}"]

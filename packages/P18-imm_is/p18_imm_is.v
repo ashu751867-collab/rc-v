@@ -1,14 +1,15 @@
 // P18 Immediate generator I/S
-// Keep the module name and the port list exactly as they are.
-// You may change 'output wire' to 'output reg' if you assign an output in an always block.
-// Delete the placeholder assigns and write your design.
+// Combinational Verilog module extracting and sign-extending I-type and S-type immediates.
 module p18_imm_is (
     input  wire [31:0] instr,
     output wire [31:0] imm_i,
     output wire [31:0] imm_s
 );
 
-    assign imm_i = 32'd0;   // placeholder
-    assign imm_s = 32'd0;   // placeholder
+    // imm_i: extract bits [31:20] and sign-extend by replicating bit 31 twenty times
+    assign imm_i = {{20{instr[31]}}, instr[31:20]};
+
+    // imm_s: extract bits [31:25] and [11:7], concatenate, and sign-extend by replicating bit 31 twenty times
+    assign imm_s = {{20{instr[31]}}, instr[31:25], instr[11:7]};
 
 endmodule

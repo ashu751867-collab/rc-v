@@ -28,7 +28,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 1: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 1: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'h9626bda5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 2: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 2: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 2: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 2: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -36,7 +37,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 2: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 2: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h6b510400; m_rdata = 32'h7794d8fb;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 3: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 3: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 3: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 3: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -44,7 +46,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 3: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 3: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'hdf1b; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 4: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 4: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 4: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 4: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -52,7 +55,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 4: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 4: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1009c; m_rdata = 32'h5a9d9baf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 5: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 5: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 5: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 5: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -60,7 +64,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 5: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 5: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'habe77f40;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 6: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 6: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 6: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 6: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -68,7 +73,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 6: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 6: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'h280ff3ab; m_rdata = 32'h850fb74c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 7: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 7: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 7: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 7: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -76,7 +82,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 7: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 7: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h7; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 8: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 8: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 8: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 8: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -84,7 +91,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 8: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 8: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h2; m_rdata = 32'hd;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 9: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 9: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 9: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 9: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -92,7 +100,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 9: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 9: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 10: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 10: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 10: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 10: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -100,7 +109,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 10: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 10: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h2; m_rdata = 32'ha9a037f5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 11: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 11: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 11: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 11: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -108,7 +118,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 11: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 11: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'hbd7fe1ab;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 12: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 12: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 12: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 12: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -116,7 +127,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 12: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 12: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10010; m_rdata = 32'h5ef9d214;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 13: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10010) begin errors = errors + 1; if (errors <= 20) $display("row 13: rdata = %h, expected %h", rdata, 32'h10010); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 13: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 13: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -124,7 +136,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 13: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 13: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10070; m_rdata = 32'hb25a1558;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10010) begin errors = errors + 1; if (errors <= 20) $display("row 14: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10010); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 14: rdata = %h, expected %h", rdata, 32'h10070); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 14: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 14: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -132,7 +145,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 14: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 14: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'ha8c8693c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 15: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 15: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 15: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 15: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -140,7 +154,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 15: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 15: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h100e4; m_rdata = 32'h19;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 16: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10070); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100e4) begin errors = errors + 1; if (errors <= 20) $display("row 16: rdata = %h, expected %h", rdata, 32'h100e4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 16: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 16: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -148,7 +163,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 16: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 16: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'hf5; m_rdata = 32'ha1e7d25a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 17: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 17: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 17: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 17: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -156,7 +172,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 17: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 17: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h1; m_rdata = 32'h1c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 18: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 18: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 18: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 18: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -164,7 +181,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 18: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 18: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1; m_rdata = 32'hcf2139ba;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 19: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 19: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 19: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 19: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -172,7 +190,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 19: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 19: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'hd90f; m_rdata = 32'h6061b984;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 20: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 20: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 20: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 20: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -180,7 +199,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 20: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 20: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'h11acb60;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 21: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 21: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 21: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 21: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -188,7 +208,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 21: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 21: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100c4; m_rdata = 32'ha90175f4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100e4) begin errors = errors + 1; if (errors <= 20) $display("row 22: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100e4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100e4) begin errors = errors + 1; if (errors <= 20) $display("row 22: rdata = %h, expected %h", rdata, 32'h100e4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 22: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 22: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -196,7 +217,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 22: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 22: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10058; m_rdata = 32'h18;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 23: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 23: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 23: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 23: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -204,7 +226,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 23: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 23: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 24: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 24: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 24: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 24: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -212,7 +235,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 24: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 24: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h10054; m_rdata = 32'h7e798e32;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100e4) begin errors = errors + 1; if (errors <= 20) $display("row 25: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100e4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100e4) begin errors = errors + 1; if (errors <= 20) $display("row 25: rdata = %h, expected %h", rdata, 32'h100e4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 25: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 25: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -220,7 +244,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 25: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 25: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'h8647c755;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 26: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 26: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 26: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 26: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -228,7 +253,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 26: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 26: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h2; m_rdata = 32'h3c0329df;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 27: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 27: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 27: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 27: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -236,7 +262,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 27: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 27: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h26; m_rdata = 32'hc;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 28: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 28: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 28: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 28: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -244,7 +271,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 28: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 28: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h67f4; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 29: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 29: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 29: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 29: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -252,7 +280,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 29: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 29: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'ha; m_rdata = 32'h9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 30: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 30: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 30: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 30: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -260,7 +289,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 30: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 30: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10044; m_rdata = 32'hd0933ea9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100e4) begin errors = errors + 1; if (errors <= 20) $display("row 31: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100e4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10044) begin errors = errors + 1; if (errors <= 20) $display("row 31: rdata = %h, expected %h", rdata, 32'h10044); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 31: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 31: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -268,7 +298,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 31: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 31: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'hb; m_rdata = 32'h1604475d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 32: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 32: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 32: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h10044) begin errors = errors + 1; if (errors <= 20) $display("row 32: m_addr = %h, expected %h", m_addr, 32'h10044); end
@@ -276,7 +307,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 32: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 32: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100fc; m_rdata = 32'h1f056b17;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10044) begin errors = errors + 1; if (errors <= 20) $display("row 33: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10044); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10044) begin errors = errors + 1; if (errors <= 20) $display("row 33: rdata = %h, expected %h", rdata, 32'h10044); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 33: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 33: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -284,7 +316,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h1f056b17) begin errors = errors + 1; if (errors <= 20) $display("row 33: m_wdata = %h, expected %h", m_wdata, 32'h1f056b17); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 33: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 34: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 34: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 34: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 34: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -292,7 +325,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 34: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 34: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100ac; m_rdata = 32'hbe801c46;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 35: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 35: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 35: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 35: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -300,7 +334,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 35: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 35: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'h17f1; m_rdata = 32'hc953999b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 36: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 36: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 36: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 36: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -308,7 +343,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 36: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 36: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'hf9; m_rdata = 32'h673eacb8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 37: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 37: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 37: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 37: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -316,7 +352,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 37: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 37: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'ha; m_rdata = 32'h36d69592;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 38: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 38: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 38: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 38: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -324,7 +361,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 38: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 38: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h5322; m_rdata = 32'hb54be6d2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 39: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 39: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 39: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 39: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -332,7 +370,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 39: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 39: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h8; wdata = 32'h421e; m_rdata = 32'h27d32958;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 40: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 40: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 40: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 40: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -340,7 +379,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 40: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 40: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h0; m_rdata = 32'h8d0898f4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 41: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 41: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 41: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 41: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -348,7 +388,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 41: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 41: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1007c; m_rdata = 32'h93ab531;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 42: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10048); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 42: rdata = %h, expected %h", rdata, 32'h10048); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 42: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 42: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -356,7 +397,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 42: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 42: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h10038; m_rdata = 32'h18;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 43: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10048); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 43: rdata = %h, expected %h", rdata, 32'h10048); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 43: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 43: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -364,7 +406,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 43: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 43: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h0; m_rdata = 32'h1a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 44: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 44: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 44: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 44: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -372,7 +415,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 44: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 44: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10028; m_rdata = 32'hf9d59dea;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 45: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10048); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 45: rdata = %h, expected %h", rdata, 32'h10048); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 45: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 45: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -380,7 +424,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 45: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 45: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'hc218e352;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 46: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 46: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 46: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 46: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -388,7 +433,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 46: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 46: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100d0; m_rdata = 32'h843d363;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 47: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 47: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 47: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 47: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -396,7 +442,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 47: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 47: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1; m_rdata = 32'hc89f5339;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 48: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 48: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 48: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 48: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -404,7 +451,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 48: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 48: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 49: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 49: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 49: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 49: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -412,7 +460,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 49: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 49: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h6; wdata = 32'hb9d0; m_rdata = 32'h84ad949b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 50: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 50: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 50: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 50: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -420,7 +469,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 50: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 50: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h1; m_rdata = 32'h4e72077;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 51: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 51: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 51: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 51: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -428,7 +478,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 51: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 51: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h22; m_rdata = 32'h83b86adb;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 52: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 52: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 52: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 52: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -436,7 +487,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 52: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 52: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10088; m_rdata = 32'h9143f518;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 53: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 53: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 53: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 53: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -444,7 +496,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 53: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 53: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'hd7; m_rdata = 32'he08088a2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 54: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 54: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 54: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 54: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -452,7 +505,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 54: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 54: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h3; m_rdata = 32'h8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 55: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 55: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 55: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 55: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -460,7 +514,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 55: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 55: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'hb74e039b; m_rdata = 32'h4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 56: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 56: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 56: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 56: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -468,7 +523,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 56: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 56: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'h1; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 57: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 57: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 57: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 57: m_addr = %h, expected %h", m_addr, 32'h10048); end
@@ -476,7 +532,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 57: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 57: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h10060; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 58: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10048); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10048) begin errors = errors + 1; if (errors <= 20) $display("row 58: rdata = %h, expected %h", rdata, 32'h10048); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 58: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 58: m_addr = %h, expected %h", m_addr, 32'h4); end
@@ -484,7 +541,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h7fffffff) begin errors = errors + 1; if (errors <= 20) $display("row 58: m_wdata = %h, expected %h", m_wdata, 32'h7fffffff); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 58: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'ha8ab216a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 59: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 59: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 59: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h1004c) begin errors = errors + 1; if (errors <= 20) $display("row 59: m_addr = %h, expected %h", m_addr, 32'h1004c); end
@@ -492,7 +550,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 59: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 59: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h10070; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1004c) begin errors = errors + 1; if (errors <= 20) $display("row 60: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1004c); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1004c) begin errors = errors + 1; if (errors <= 20) $display("row 60: rdata = %h, expected %h", rdata, 32'h1004c); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 60: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h8) begin errors = errors + 1; if (errors <= 20) $display("row 60: m_addr = %h, expected %h", m_addr, 32'h8); end
@@ -500,7 +559,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 60: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 60: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'ha; wdata = 32'h1; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 61: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 61: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 61: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h10050) begin errors = errors + 1; if (errors <= 20) $display("row 61: m_addr = %h, expected %h", m_addr, 32'h10050); end
@@ -508,7 +568,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 61: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 61: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100d8; m_rdata = 32'h11;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10050) begin errors = errors + 1; if (errors <= 20) $display("row 62: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10050); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10050) begin errors = errors + 1; if (errors <= 20) $display("row 62: rdata = %h, expected %h", rdata, 32'h10050); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 62: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'hc) begin errors = errors + 1; if (errors <= 20) $display("row 62: m_addr = %h, expected %h", m_addr, 32'hc); end
@@ -516,7 +577,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h11) begin errors = errors + 1; if (errors <= 20) $display("row 62: m_wdata = %h, expected %h", m_wdata, 32'h11); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 62: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100ac; m_rdata = 32'h95613d66;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hc) begin errors = errors + 1; if (errors <= 20) $display("row 63: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hc); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 63: rdata = %h, expected %h", rdata, 32'h10); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 63: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 63: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -524,7 +586,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 63: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 63: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100cc; m_rdata = 32'h23c9275c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10054) begin errors = errors + 1; if (errors <= 20) $display("row 64: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10054); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10054) begin errors = errors + 1; if (errors <= 20) $display("row 64: rdata = %h, expected %h", rdata, 32'h10054); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 64: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 64: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -532,7 +595,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 64: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 64: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h100ac; m_rdata = 32'h19d44ad0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10054) begin errors = errors + 1; if (errors <= 20) $display("row 65: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10054); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100ac) begin errors = errors + 1; if (errors <= 20) $display("row 65: rdata = %h, expected %h", rdata, 32'h100ac); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 65: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 65: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -540,7 +604,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 65: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 65: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'hf0e17027;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 66: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 66: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 66: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 66: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -548,7 +613,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 66: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 66: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 67: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 67: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 67: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 67: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -556,7 +622,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 67: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 67: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10004; m_rdata = 32'h1d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100ac) begin errors = errors + 1; if (errors <= 20) $display("row 68: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100ac); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 68: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 68: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 68: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -564,7 +631,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 68: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 68: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'ha8; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 69: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 69: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 69: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 69: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -572,7 +640,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 69: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 69: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h2; m_rdata = 32'h22aff101;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 70: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 70: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 70: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 70: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -580,7 +649,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 70: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 70: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'hb6ee; m_rdata = 32'h4744162f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 71: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 71: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 71: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 71: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -588,7 +658,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 71: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 71: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1; m_rdata = 32'h9f5b62cd;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 72: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 72: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 72: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 72: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -596,7 +667,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 72: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 72: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100f4; m_rdata = 32'h15;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 73: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 73: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 73: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 73: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -604,7 +676,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 73: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 73: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100d0; m_rdata = 32'hb0d38e02;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 74: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 74: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 74: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 74: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -612,7 +685,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 74: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 74: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h9; wdata = 32'h9; m_rdata = 32'h1a5a09f1;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 75: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 75: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 75: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 75: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -620,7 +694,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 75: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 75: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10028; m_rdata = 32'hbd15583c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 76: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 76: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 76: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 76: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -628,7 +703,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 76: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 76: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h0; m_rdata = 32'hceaa638f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 77: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 77: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 77: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 77: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -636,7 +712,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 77: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 77: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10074; m_rdata = 32'h7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 78: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 78: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 78: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 78: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -644,7 +721,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 78: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 78: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'hadde; m_rdata = 32'h7cdee221;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 79: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 79: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 79: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 79: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -652,7 +730,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 79: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 79: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h1005c; m_rdata = 32'ha0fc1908;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 80: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 80: rdata = %h, expected %h", rdata, 32'h10); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 80: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 80: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -660,7 +739,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 80: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 80: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h100e4; m_rdata = 32'hfe297e8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 81: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 81: rdata = %h, expected %h", rdata, 32'h10); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 81: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 81: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -668,7 +748,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 81: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 81: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'h939fd11d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 82: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 82: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 82: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 82: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -676,7 +757,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 82: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 82: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10030; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 83: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 83: rdata = %h, expected %h", rdata, 32'h10); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 83: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 83: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -684,7 +766,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 83: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 83: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10084; m_rdata = 32'h7b46212b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 84: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 84: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 84: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 84: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -692,7 +775,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 84: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 84: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h5bd6; m_rdata = 32'h74112ab4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 85: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 85: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 85: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 85: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -700,7 +784,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 85: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 85: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h3; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 86: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 86: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 86: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 86: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -708,7 +793,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 86: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 86: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h74777b0e; m_rdata = 32'heff3ece5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 87: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 87: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 87: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 87: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -716,7 +802,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 87: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 87: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100a4; m_rdata = 32'hffecc5a5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 88: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 88: rdata = %h, expected %h", rdata, 32'h10); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 88: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 88: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -724,7 +811,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 88: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 88: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h2; m_rdata = 32'hc526ed14;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 89: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 89: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 89: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 89: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -732,7 +820,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 89: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 89: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'hd; m_rdata = 32'h11;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 90: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 90: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 90: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 90: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -740,7 +829,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 90: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 90: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'he2af; m_rdata = 32'hf8cbb541;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 91: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 91: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 91: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 91: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -748,7 +838,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 91: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 91: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1005c; m_rdata = 32'h12;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 92: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 92: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 92: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 92: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -756,7 +847,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 92: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 92: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100cc; m_rdata = 32'h12;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 93: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 93: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 93: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 93: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -764,7 +856,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 93: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 93: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h64; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 94: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 94: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 94: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 94: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -772,7 +865,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 94: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 94: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1001c; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 95: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 95: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 95: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 95: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -780,7 +874,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 95: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 95: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h78590cb1; m_rdata = 32'ha7a1a8c4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 96: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 96: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 96: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 96: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -788,7 +883,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 96: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 96: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h0; m_rdata = 32'h16;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 97: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 97: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 97: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 97: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -796,7 +892,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 97: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 97: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h2ac4; m_rdata = 32'h1d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 98: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 98: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 98: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 98: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -804,7 +901,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 98: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 98: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10020; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 99: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10020) begin errors = errors + 1; if (errors <= 20) $display("row 99: rdata = %h, expected %h", rdata, 32'h10020); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 99: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 99: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -812,7 +910,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 99: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 99: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'hccfe77df; m_rdata = 32'h16efa370;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 100: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 100: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 100: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 100: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -820,7 +919,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 100: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 100: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h10028; m_rdata = 32'h762225bd;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10) begin errors = errors + 1; if (errors <= 20) $display("row 101: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 101: rdata = %h, expected %h", rdata, 32'h10028); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 101: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 101: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -828,7 +928,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 101: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 101: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100cc; m_rdata = 32'hd8b69d48;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10020) begin errors = errors + 1; if (errors <= 20) $display("row 102: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10020); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10020) begin errors = errors + 1; if (errors <= 20) $display("row 102: rdata = %h, expected %h", rdata, 32'h10020); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 102: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 102: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -836,7 +937,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 102: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 102: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h100f0; m_rdata = 32'h79e143f9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10020) begin errors = errors + 1; if (errors <= 20) $display("row 103: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10020); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100f0) begin errors = errors + 1; if (errors <= 20) $display("row 103: rdata = %h, expected %h", rdata, 32'h100f0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 103: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 103: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -844,7 +946,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 103: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 103: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h100d4; m_rdata = 32'hfe9c1598;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100f0) begin errors = errors + 1; if (errors <= 20) $display("row 104: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100f0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 104: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 104: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 104: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -852,7 +955,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 104: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 104: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h9172; m_rdata = 32'h5d46c0b0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 105: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 105: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 105: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 105: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -860,7 +964,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 105: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 105: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'h5ef7cc5d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 106: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 106: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 106: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 106: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -868,7 +973,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 106: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 106: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'he5d3f386;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 107: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 107: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 107: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 107: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -876,7 +982,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 107: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 107: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h91; m_rdata = 32'h26bd0065;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 108: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 108: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 108: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 108: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -884,7 +991,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 108: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 108: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h7; wdata = 32'h4a1a53f6; m_rdata = 32'h9f260044;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 109: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 109: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 109: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 109: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -892,7 +1000,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 109: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 109: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h60; m_rdata = 32'h981c59ed;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 110: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 110: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 110: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 110: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -900,7 +1009,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 110: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 110: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h10090; m_rdata = 32'hff81d52d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 111: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10028); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 111: rdata = %h, expected %h", rdata, 32'h10028); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 111: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 111: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -908,7 +1018,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 111: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 111: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100e8; m_rdata = 32'h42c0ef1c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 112: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 112: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 112: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 112: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -916,7 +1027,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 112: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 112: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'hc0; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 113: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 113: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 113: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 113: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -924,7 +1036,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 113: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 113: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h10060; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 114: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10028); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 114: rdata = %h, expected %h", rdata, 32'h10028); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 114: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 114: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -932,7 +1045,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 114: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 114: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'h3;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 115: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 115: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 115: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 115: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -940,7 +1054,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 115: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 115: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10044; m_rdata = 32'h4d8effd0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 116: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 116: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 116: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 116: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -948,7 +1063,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 116: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 116: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h1008c; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 117: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10028); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 117: rdata = %h, expected %h", rdata, 32'h10028); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 117: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 117: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -956,7 +1072,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 117: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 117: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h4; wdata = 32'h6b29; m_rdata = 32'hfd588217;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 118: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 118: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 118: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 118: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -964,7 +1081,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 118: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 118: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h10018; m_rdata = 32'h5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10028) begin errors = errors + 1; if (errors <= 20) $display("row 119: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10028); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 119: rdata = %h, expected %h", rdata, 32'h10018); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 119: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 119: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -972,7 +1090,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 119: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 119: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h9; wdata = 32'h1; m_rdata = 32'h1c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 120: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 120: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 120: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 120: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -980,7 +1099,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 120: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 120: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10064; m_rdata = 32'h1f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 121: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10018); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 121: rdata = %h, expected %h", rdata, 32'h10018); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 121: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 121: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -988,7 +1108,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 121: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 121: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1001c; m_rdata = 32'hdecfb793;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 122: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 122: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 122: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 122: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -996,7 +1117,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 122: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 122: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h7794a679;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 123: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 123: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 123: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 123: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1004,7 +1126,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 123: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 123: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h8881; m_rdata = 32'h74c7bdd4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 124: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 124: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 124: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 124: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1012,7 +1135,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 124: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 124: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1005c; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 125: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 125: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 125: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 125: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1020,7 +1144,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 125: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 125: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h0; m_rdata = 32'ha87bd61c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 126: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 126: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 126: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 126: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1028,7 +1153,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 126: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 126: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h4; wdata = 32'h0; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 127: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 127: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 127: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 127: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1036,7 +1162,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 127: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 127: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h0; m_rdata = 32'h4b7c24e9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 128: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 128: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 128: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 128: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1044,7 +1171,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 128: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 128: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10030; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 129: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 129: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 129: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 129: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1052,7 +1180,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 129: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 129: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10088; m_rdata = 32'hb58a10e9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 130: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10018); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 130: rdata = %h, expected %h", rdata, 32'h10018); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 130: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 130: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1060,7 +1189,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 130: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 130: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100b0; m_rdata = 32'h8fa0f655;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 131: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 131: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 131: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 131: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1068,7 +1198,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 131: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 131: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100e8; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 132: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 132: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 132: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 132: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1076,7 +1207,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 132: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 132: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h88c6; m_rdata = 32'h5e32595b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 133: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 133: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 133: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 133: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1084,7 +1216,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 133: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 133: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'hd785; m_rdata = 32'h46b69da1;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 134: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 134: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 134: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 134: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1092,7 +1225,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 134: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 134: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100b8; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 135: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 135: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 135: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 135: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1100,7 +1234,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 135: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 135: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1; m_rdata = 32'h13;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 136: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 136: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 136: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 136: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1108,7 +1243,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 136: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 136: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h16;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 137: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 137: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 137: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 137: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1116,7 +1252,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 137: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 137: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h5; m_rdata = 32'h3b12e333;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 138: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 138: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 138: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 138: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1124,7 +1261,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 138: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 138: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h10;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 139: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 139: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 139: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 139: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1132,7 +1270,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 139: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 139: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h74; m_rdata = 32'h2c2e41de;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 140: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 140: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 140: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 140: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1140,7 +1279,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 140: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 140: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h3; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 141: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 141: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 141: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 141: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1148,7 +1288,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 141: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 141: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'he47e929a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 142: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 142: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 142: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 142: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1156,7 +1297,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 142: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 142: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h5235; m_rdata = 32'h59a08373;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1164,7 +1306,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h3; m_rdata = 32'h22b378d1;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 144: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 144: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 144: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 144: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1172,7 +1315,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 144: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 144: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h3738; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 145: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 145: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 145: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 145: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1180,7 +1324,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 145: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 145: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h14153a7d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 146: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 146: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 146: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 146: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1188,7 +1333,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 146: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 146: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 147: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 147: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 147: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 147: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1196,7 +1342,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 147: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 147: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'ha; m_rdata = 32'h1f451790;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 148: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 148: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 148: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 148: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1204,7 +1351,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 148: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 148: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h4; wdata = 32'h3; m_rdata = 32'h56db7f3c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 149: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 149: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 149: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 149: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1212,7 +1360,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 149: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 149: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h1; m_rdata = 32'hbdd575ad;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 150: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 150: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 150: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 150: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1220,7 +1369,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 150: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 150: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h10038; m_rdata = 32'h1b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 151: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 151: rdata = %h, expected %h", rdata, 32'h100d4); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 151: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 151: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1228,7 +1378,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 151: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 151: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h5e; m_rdata = 32'h17;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 152: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 152: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 152: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 152: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1236,7 +1387,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 152: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 152: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'ha; m_rdata = 32'hf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 153: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 153: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 153: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 153: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1244,7 +1396,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 153: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 153: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h1; m_rdata = 32'h338bdd7d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 154: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 154: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 154: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 154: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1252,7 +1405,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 154: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 154: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'haae5; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 155: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 155: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 155: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 155: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1260,7 +1414,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 155: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 155: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 156: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 156: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 156: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 156: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1268,7 +1423,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 156: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 156: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hc; wdata = 32'ha8; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 157: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 157: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 157: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 157: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1276,7 +1432,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 157: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 157: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h1e5fff40; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 158: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 158: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 158: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 158: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1284,7 +1441,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 158: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 158: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h2; m_rdata = 32'h12;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 159: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 159: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 159: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 159: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1292,7 +1450,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 159: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 159: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100ec; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 160: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10018); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 160: rdata = %h, expected %h", rdata, 32'h10018); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 160: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 160: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1300,7 +1459,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 160: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 160: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'hc89d; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 161: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 161: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 161: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h100d4) begin errors = errors + 1; if (errors <= 20) $display("row 161: m_addr = %h, expected %h", m_addr, 32'h100d4); end
@@ -1308,7 +1468,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 161: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 161: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h1004c; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 162: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10018); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 162: rdata = %h, expected %h", rdata, 32'h10018); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 162: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 162: m_addr = %h, expected %h", m_addr, 32'h10018); end
@@ -1316,7 +1477,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h80000000) begin errors = errors + 1; if (errors <= 20) $display("row 162: m_wdata = %h, expected %h", m_wdata, 32'h80000000); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 162: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'hd; m_rdata = 32'h9f2b1e7b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 163: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 163: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 163: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 163: m_addr = %h, expected %h", m_addr, 32'h100d8); end
@@ -1324,7 +1486,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 163: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 163: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h6cd3; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 164: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 164: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 164: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h1001c) begin errors = errors + 1; if (errors <= 20) $display("row 164: m_addr = %h, expected %h", m_addr, 32'h1001c); end
@@ -1332,7 +1495,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h80000000) begin errors = errors + 1; if (errors <= 20) $display("row 164: m_wdata = %h, expected %h", m_wdata, 32'h80000000); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 164: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h10070; m_rdata = 32'h3a02179f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 165: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100dc) begin errors = errors + 1; if (errors <= 20) $display("row 165: rdata = %h, expected %h", rdata, 32'h100dc); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 165: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h100dc) begin errors = errors + 1; if (errors <= 20) $display("row 165: m_addr = %h, expected %h", m_addr, 32'h100dc); end
@@ -1340,7 +1504,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 165: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 165: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h1001c; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100dc) begin errors = errors + 1; if (errors <= 20) $display("row 166: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100dc); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100dc) begin errors = errors + 1; if (errors <= 20) $display("row 166: rdata = %h, expected %h", rdata, 32'h100dc); end
         checks = checks + 1; if (req !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 166: req = %h, expected %h", req, 1'h1); end
         checks = checks + 1; if (m_addr !== 32'h10020) begin errors = errors + 1; if (errors <= 20) $display("row 166: m_addr = %h, expected %h", m_addr, 32'h10020); end
@@ -1348,7 +1513,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h80000000) begin errors = errors + 1; if (errors <= 20) $display("row 166: m_wdata = %h, expected %h", m_wdata, 32'h80000000); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 166: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 167: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 167: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 167: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 167: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1356,7 +1522,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 167: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 167: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100a4; m_rdata = 32'hcd254ff2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100e0) begin errors = errors + 1; if (errors <= 20) $display("row 168: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100e0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100e0) begin errors = errors + 1; if (errors <= 20) $display("row 168: rdata = %h, expected %h", rdata, 32'h100e0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 168: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 168: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1364,7 +1531,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 168: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 168: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h2; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 169: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 169: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 169: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 169: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1372,7 +1540,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 169: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 169: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h0; m_rdata = 32'h11;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 170: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 170: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 170: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 170: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1380,7 +1549,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 170: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 170: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1003c; m_rdata = 32'haeefa8d9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100e0) begin errors = errors + 1; if (errors <= 20) $display("row 171: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100e0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100e0) begin errors = errors + 1; if (errors <= 20) $display("row 171: rdata = %h, expected %h", rdata, 32'h100e0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 171: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 171: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1388,7 +1558,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 171: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 171: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h0; m_rdata = 32'h32085e3f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 172: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 172: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 172: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 172: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1396,7 +1567,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 172: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 172: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h91b6dea6; m_rdata = 32'h34096db;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 173: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 173: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 173: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 173: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1404,7 +1576,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 173: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 173: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'hc9; m_rdata = 32'h67128f7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 174: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 174: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 174: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 174: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1412,7 +1585,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 174: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 174: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10084; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100e0) begin errors = errors + 1; if (errors <= 20) $display("row 175: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100e0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 175: rdata = %h, expected %h", rdata, 32'h10084); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 175: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 175: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1420,7 +1594,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 175: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 175: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 176: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 176: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 176: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 176: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1428,7 +1603,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 176: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 176: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 177: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 177: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 177: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 177: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1436,7 +1612,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 177: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 177: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h0; m_rdata = 32'h37b02604;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 178: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 178: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 178: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 178: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1444,7 +1621,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 178: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 178: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'h6d4ae17d; m_rdata = 32'he82d2f0d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 179: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 179: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 179: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 179: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1452,7 +1630,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 179: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 179: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h24d6d2cc; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 180: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 180: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 180: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 180: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1460,7 +1639,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 180: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 180: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h0; m_rdata = 32'h12;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 181: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 181: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 181: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 181: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1468,7 +1648,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 181: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 181: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100b8; m_rdata = 32'h622a71b7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 182: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 182: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 182: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 182: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1476,7 +1657,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 182: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 182: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10070; m_rdata = 32'h1fcb8dc7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 183: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 183: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 183: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 183: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1484,7 +1666,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 183: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 183: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1008c; m_rdata = 32'h5fb61154;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 184: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 184: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 184: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 184: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1492,7 +1675,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 184: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 184: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'hbafa26d5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 185: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 185: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 185: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 185: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1500,7 +1684,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 185: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 185: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10078; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 186: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10084); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 186: rdata = %h, expected %h", rdata, 32'h10084); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 186: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 186: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1508,7 +1693,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 186: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 186: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h10090; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 187: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10084); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 187: rdata = %h, expected %h", rdata, 32'h10084); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 187: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 187: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1516,7 +1702,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 187: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 187: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h79d2; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 188: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 188: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 188: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 188: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1524,7 +1711,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 188: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 188: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10030; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 189: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10084); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10030) begin errors = errors + 1; if (errors <= 20) $display("row 189: rdata = %h, expected %h", rdata, 32'h10030); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 189: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 189: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1532,7 +1720,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 189: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 189: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10058; m_rdata = 32'h5ea1f571;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 190: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 190: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 190: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 190: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1540,7 +1729,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 190: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 190: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100a0; m_rdata = 32'ha;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 191: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 191: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 191: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 191: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1548,7 +1738,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 191: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 191: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10034; m_rdata = 32'h9fa0069e;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 192: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 192: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 192: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 192: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1556,7 +1747,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 192: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 192: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h861c; m_rdata = 32'he7b82de9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 193: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 193: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 193: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 193: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1564,7 +1756,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 193: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 193: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'h59aa7ff5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 194: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 194: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 194: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 194: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1572,7 +1765,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 194: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 194: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10030; m_rdata = 32'h680a21ea;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10030) begin errors = errors + 1; if (errors <= 20) $display("row 195: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10030); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10030) begin errors = errors + 1; if (errors <= 20) $display("row 195: rdata = %h, expected %h", rdata, 32'h10030); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 195: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 195: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1580,7 +1774,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 195: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 195: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 196: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 196: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 196: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 196: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1588,7 +1783,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 196: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 196: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10070; m_rdata = 32'hd877ebaa;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10030) begin errors = errors + 1; if (errors <= 20) $display("row 197: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10030); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 197: rdata = %h, expected %h", rdata, 32'h10070); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 197: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 197: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1596,7 +1792,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 197: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 197: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h3; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 198: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 198: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 198: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 198: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1604,7 +1801,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 198: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 198: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h4; wdata = 32'he2; m_rdata = 32'h90f8aac7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 199: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 199: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 199: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 199: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1612,7 +1810,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 199: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 199: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100ec; m_rdata = 32'hc5330092;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 200: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 200: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 200: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 200: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1620,7 +1819,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 200: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 200: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1008c; m_rdata = 32'h33207741;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 201: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10070); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 201: rdata = %h, expected %h", rdata, 32'h10070); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 201: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 201: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1628,7 +1828,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 201: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 201: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h43a7275a; m_rdata = 32'h92fad7d9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 202: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 202: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 202: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 202: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1636,7 +1837,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 202: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 202: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10018; m_rdata = 32'h9509bb0a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 203: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10070); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 203: rdata = %h, expected %h", rdata, 32'h10018); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 203: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 203: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1644,7 +1846,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 203: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 203: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'h1; m_rdata = 32'hfef5652b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 204: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 204: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 204: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 204: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1652,7 +1855,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 204: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 204: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100b8; m_rdata = 32'h203448b6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 205: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10018); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 205: rdata = %h, expected %h", rdata, 32'h10018); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 205: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 205: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1660,7 +1864,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 205: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 205: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h3; m_rdata = 32'h264b2e2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 206: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 206: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 206: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 206: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1668,7 +1873,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 206: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 206: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'hc5a0c9a6; m_rdata = 32'hc95fbccc;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 207: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 207: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 207: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 207: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1676,7 +1882,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 207: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 207: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h3; wdata = 32'he; m_rdata = 32'h13;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 208: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 208: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 208: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 208: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1684,7 +1891,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 208: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 208: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h0; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 209: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 209: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 209: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 209: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1692,7 +1900,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 209: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 209: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'h17;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 210: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 210: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 210: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 210: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1700,7 +1909,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 210: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 210: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 211: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 211: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 211: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 211: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1708,7 +1918,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 211: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 211: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'h7; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 212: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 212: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 212: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 212: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1716,7 +1927,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 212: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 212: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'hd;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 213: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 213: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 213: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 213: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1724,7 +1936,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 213: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 213: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h4; wdata = 32'h3bb0d22d; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 214: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 214: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 214: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 214: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1732,7 +1945,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 214: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 214: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h100d8; m_rdata = 32'ha;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10018) begin errors = errors + 1; if (errors <= 20) $display("row 215: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10018); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 215: rdata = %h, expected %h", rdata, 32'h100d8); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 215: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 215: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1740,7 +1954,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 215: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 215: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h7ceca8; m_rdata = 32'h1dff5592;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 216: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 216: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 216: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 216: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1748,7 +1963,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 216: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 216: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 217: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 217: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 217: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 217: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1756,7 +1972,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 217: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 217: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'hae; m_rdata = 32'h955930b9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 218: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 218: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 218: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 218: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1764,7 +1981,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 218: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 218: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; m_rdata = 32'h6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 219: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 219: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 219: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 219: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1772,7 +1990,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 219: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 219: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100f0; m_rdata = 32'h67a3f9b4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 220: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 220: rdata = %h, expected %h", rdata, 32'h100d8); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 220: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 220: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1780,7 +1999,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 220: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 220: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h1000c; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 221: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 221: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 221: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 221: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1788,7 +2008,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 221: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 221: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h3; m_rdata = 32'h41ab5e02;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 222: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 222: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 222: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 222: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1796,7 +2017,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 222: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 222: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'hf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 223: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 223: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 223: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 223: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1804,7 +2026,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 223: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 223: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h1008c; m_rdata = 32'heba3575c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 224: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 224: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 224: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 224: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1812,7 +2035,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 224: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 224: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h10044; m_rdata = 32'hae4ae07f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 225: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 225: rdata = %h, expected %h", rdata, 32'h10024); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 225: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 225: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1820,7 +2044,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 225: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 225: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h10070; m_rdata = 32'h1f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10024) begin errors = errors + 1; if (errors <= 20) $display("row 226: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10024); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 226: rdata = %h, expected %h", rdata, 32'h10070); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 226: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 226: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1828,7 +2053,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 226: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 226: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'hbc12caef;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 227: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 227: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 227: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 227: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1836,7 +2062,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 227: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 227: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h3; wdata = 32'hbb83; m_rdata = 32'h3469a7ba;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 228: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 228: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 228: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 228: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1844,7 +2071,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 228: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 228: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100fc; m_rdata = 32'h52cfb2c0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 229: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 229: rdata = %h, expected %h", rdata, 32'h100d8); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 229: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 229: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1852,7 +2080,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 229: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 229: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h100b0; m_rdata = 32'hea1de726;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10070) begin errors = errors + 1; if (errors <= 20) $display("row 230: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10070); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100b0) begin errors = errors + 1; if (errors <= 20) $display("row 230: rdata = %h, expected %h", rdata, 32'h100b0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 230: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 230: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1860,7 +2089,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 230: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 230: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'head96621; m_rdata = 32'h6c588053;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 231: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 231: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 231: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 231: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1868,7 +2098,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 231: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 231: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'hde; m_rdata = 32'h13bfb742;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 232: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 232: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 232: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 232: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1876,7 +2107,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 232: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 232: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h4be10817; m_rdata = 32'hc5bff3e1;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 233: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 233: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 233: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 233: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1884,7 +2116,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 233: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 233: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h100a0; m_rdata = 32'h3;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100d8) begin errors = errors + 1; if (errors <= 20) $display("row 234: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100d8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 234: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 234: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 234: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1892,7 +2125,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 234: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 234: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'hd; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 235: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 235: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 235: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 235: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1900,7 +2134,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 235: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 235: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h100e4; m_rdata = 32'h80000000;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100b0) begin errors = errors + 1; if (errors <= 20) $display("row 236: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100b0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100b0) begin errors = errors + 1; if (errors <= 20) $display("row 236: rdata = %h, expected %h", rdata, 32'h100b0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 236: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 236: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1908,7 +2143,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 236: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 236: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h0; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 237: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 237: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 237: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 237: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1916,7 +2152,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 237: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 237: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100b4; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 238: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100a0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 238: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 238: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 238: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1924,7 +2161,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 238: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 238: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10020; m_rdata = 32'hc5545904;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 239: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100a0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 239: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 239: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 239: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1932,7 +2170,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 239: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 239: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h1; m_rdata = 32'h12;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 240: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 240: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 240: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 240: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1940,7 +2179,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 240: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 240: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1003c; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 241: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100a0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 241: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 241: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 241: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1948,7 +2188,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 241: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 241: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100b4; m_rdata = 32'h96d274d0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 242: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100a0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 242: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 242: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 242: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1956,7 +2197,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 242: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 242: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h14c2; m_rdata = 32'h551f16d4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 243: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 243: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 243: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 243: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1964,7 +2206,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 243: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 243: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h0; m_rdata = 32'h4791f3b3;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 244: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 244: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 244: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 244: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1972,7 +2215,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 244: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 244: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h29; m_rdata = 32'h884d5f28;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 245: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 245: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 245: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 245: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1980,7 +2224,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 245: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 245: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 246: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 246: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 246: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 246: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1988,7 +2233,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 246: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 246: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h100ac; m_rdata = 32'h7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 247: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100a0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 247: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 247: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 247: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -1996,7 +2242,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 247: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 247: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h4; wdata = 32'hba7dd676; m_rdata = 32'h1ff491f6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 248: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 248: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 248: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 248: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2004,7 +2251,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 248: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 248: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h10084; m_rdata = 32'h7fffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100b0) begin errors = errors + 1; if (errors <= 20) $display("row 249: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100b0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 249: rdata = %h, expected %h", rdata, 32'h10084); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 249: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 249: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2012,7 +2260,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 249: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 249: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'h0; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 250: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 250: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 250: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 250: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2020,7 +2269,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 250: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 250: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h3; m_rdata = 32'h769ca6b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 251: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 251: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 251: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 251: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2028,7 +2278,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 251: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 251: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h3; wdata = 32'h908f; m_rdata = 32'h8470c136;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 252: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 252: rdata = %h, expected %h", rdata, 32'h2); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 252: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 252: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2036,7 +2287,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 252: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h1) begin errors = errors + 1; if (errors <= 20) $display("row 252: irq = %h, expected %h", irq, 1'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h4; wdata = 32'h1; m_rdata = 32'h10;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2) begin errors = errors + 1; if (errors <= 20) $display("row 253: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 253: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 253: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 253: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2044,7 +2296,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 253: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 253: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h10004; m_rdata = 32'hfd8ec873;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10084) begin errors = errors + 1; if (errors <= 20) $display("row 254: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10084); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 254: rdata = %h, expected %h", rdata, 32'h10004); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 254: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 254: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2052,7 +2305,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 254: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 254: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h14b7; m_rdata = 32'h7d6d29ed;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 255: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h30); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h30) begin errors = errors + 1; if (errors <= 20) $display("row 255: rdata = %h, expected %h", rdata, 32'h30); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 255: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 255: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2060,7 +2314,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 255: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 255: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h10080; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 256: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100a0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 256: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 256: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 256: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2068,7 +2323,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 256: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 256: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h4; wdata = 32'hb1; m_rdata = 32'hb9368585;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 257: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 257: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 257: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 257: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2076,7 +2332,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 257: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 257: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h100e4; m_rdata = 32'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 258: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h100a0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h100a0) begin errors = errors + 1; if (errors <= 20) $display("row 258: rdata = %h, expected %h", rdata, 32'h100a0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 258: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 258: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2084,7 +2341,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 258: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 258: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h0; m_rdata = 32'hffffffff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 259: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 259: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 259: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 259: m_addr = %h, expected %h", m_addr, 32'h0); end
@@ -2092,7 +2350,8 @@ module tb_p48_dma;
         checks = checks + 1; if (m_wdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 259: m_wdata = %h, expected %h", m_wdata, 32'h0); end
         checks = checks + 1; if (irq !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 259: irq = %h, expected %h", irq, 1'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h10098; m_rdata = 32'h31e7d900;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h10004) begin errors = errors + 1; if (errors <= 20) $display("row 260: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h10004); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h10098) begin errors = errors + 1; if (errors <= 20) $display("row 260: rdata = %h, expected %h", rdata, 32'h10098); end
         checks = checks + 1; if (req !== 1'h0) begin errors = errors + 1; if (errors <= 20) $display("row 260: req = %h, expected %h", req, 1'h0); end
         checks = checks + 1; if (m_addr !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 260: m_addr = %h, expected %h", m_addr, 32'h0); end

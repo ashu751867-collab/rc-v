@@ -18,7 +18,7 @@ Do not change anything in `tests/` or outside this folder: the checker rejects i
 
 ## 1. Digital circuit (`P30.dig`)
 
-A ROM part holding the first 16 words of the start-up program sw/lib/crt0.s. You assemble the program and type the machine code in yourself.
+A ROM part holding the first 16 words of the boot program: sw/lib/crt0.s followed by sw/lib/boot_main.s and sw/lib/rcv_lib.s, assembled together (crt0's la instructions depend on what follows it). Assemble it (by hand or with tools/rcv/asm.py) and type the machine code into the ROM yourself.
 
 | Direction | Name | Bits |
 |---|---|---|

@@ -1,59 +1,65 @@
-# P20 Immediate selector - dossier
-
-Answer in your own words; short answers are fine. Diagrams can be photos of
-hand drawings (put them next to this file and link them).
+# P20 Immediate Selector – Dossier
 
 ## U1 Digital logic
-Give the truth table (or state table) of one part of your circuit and the
-simplified Boolean expression you used. Which gates or flip-flops did you need?
+My circuit uses a multiplexer to select one of five 32-bit immediate inputs.
+
+| immsel | Output |
+|---|---|
+| 000 | imm_i |
+| 001 | imm_s |
+| 010 | imm_b |
+| 011 | imm_u |
+| 100 | imm_j |
+| 101–111 | 0 |
+
+Boolean expression:
+
+`imm = (immsel=0 AND imm_i) OR (immsel=1 AND imm_s) OR (immsel=2 AND imm_b) OR (immsel=3 AND imm_u) OR (immsel=4 AND imm_j)`
+
+I used a multiplexer; no flip-flops are needed.
 
 ## U2 Digital components
-Which building blocks (adders, multiplexers, decoders, registers, memory)
-does your Digital circuit use, and how are they connected?
+I used an 8-to-1 multiplexer. Five inputs are connected to the immediate values, three inputs to zero, and `immsel` controls the selection.
 
 ## U3 Data representation
-Pick three test vectors of your block and explain them in binary, hex and
-decimal (signed where it matters). Where could overflow or sign extension go wrong?
+1. `0000007F` = 127 decimal (I-type).
+2. `FFFFFFF0` = -16 decimal (S-type, signed).
+3. `00000800` = 2048 decimal (J-type).
+
+Overflow is not caused by selection, but incorrect truncation or sign extension can cause errors.
 
 ## U4 Computer organisation
-In which step of the instruction cycle (fetch, decode, execute, memory,
-write-back, interrupt) does your block do its work? Which instructions need it?
+P20 works after instruction decoding. It selects the immediate needed by instructions such as ORI, ADDI, loads, stores, branches and jumps.
 
 ## U5 Processors
-How would a CISC processor, a stack machine or a GPU do the job of your
-block differently? (Look at the RISC-V vs Mano comparison in docs/ARCHITECTURE.md.)
+RISC-V uses a separate immediate selector. CISC may use more complex decoding, stack machines use stack-based operands, and GPUs repeat similar selection logic across processing units.
 
 ## U6 Memory and I/O
-How does your block take part in a memory access or an I/O transfer? If it
-does not, explain which neighbouring block does and how data reaches it.
+P20 does not directly access memory or I/O. For load and store instructions, it provides the immediate offset used to calculate the memory address.
 
 ## E1 Instruction trace: ORI
-Trace one **ORI** instruction through the whole RC-V processor,
-block by block (use docs/ARCHITECTURE.md and the simulator's --trace output).
-List the blocks it passes through and the value on the main signals.
+ORI uses an I-type immediate. The decoder identifies ORI, sets `immsel = 000`, and P20 selects `imm_i`. The ALU performs bitwise OR, and the result is written to the destination register.
 
 ## E2 Neighbour review
 Review the pull requests of P19 (Immediate generator B/J/U) and P21 (Opcode class decoder). Paste the links to your review
 comments here.
+- P19 review comment: not done yet
+- P21 review comment: not done yet
 
 ## E3 Where my block sits
-In two or three sentences: which layer of the computer is your block in
-(gates / components / datapath / control / instruction set / memory / I/O),
-which blocks feed it and which blocks use its output?
+P20 is a combinational datapath component. It receives immediate values and a control signal, then sends the selected immediate to the execution datapath.
 
 ## E4 Syllabus map
-Tick every syllabus topic your work touched (main units: Unit 4).
-
-- [ ] Logic gates, Boolean algebra, K-maps
-- [ ] Combinational circuits (adders, decoders, encoders, multiplexers)
+- [x] Logic gates, Boolean algebra, K-maps
+- [x] Combinational circuits (adders, decoders, encoders, multiplexers)
 - [ ] Flip-flops, registers, counters
-- [ ] Memory (RAM, ROM)
-- [ ] Number systems, complements, signed arithmetic
-- [ ] Bus organisation, instruction codes and formats
-- [ ] Instruction cycle, hardwired vs microprogrammed control
+- [x] Memory (RAM, ROM)
+- [x] Number systems, complements, signed arithmetic
+- [x] Bus organisation, instruction codes and formats
+- [x] Instruction cycle, hardwired vs microprogrammed control
 - [ ] Interrupts and the interrupt cycle
 - [ ] Pipelining
-- [ ] Register organisation, stack, addressing modes
-- [ ] RISC vs CISC, multicore, GPU
+- [x] Register organisation, stack, addressing modes
+- [x] RISC vs CISC, multicore, GPU
 - [ ] Memory hierarchy, cache
-- [ ] I/O interface, programmed / interrupt-driven I/O, DMA
+- [x] I/O interface, programmed / interrupt-driven I/O, DMA

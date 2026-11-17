@@ -12,6 +12,12 @@ module p20_imm_select (
     output wire [31:0] imm
 );
 
-    assign imm = 32'd0;   // placeholder
+    assign imm =
+    (immsel == 3'd0) ? imm_i :
+    (immsel == 3'd1) ? imm_s :
+    (immsel == 3'd2) ? imm_b :
+    (immsel == 3'd3) ? imm_u :
+    (immsel == 3'd4) ? imm_j :
+                       32'd0;
 
 endmodule

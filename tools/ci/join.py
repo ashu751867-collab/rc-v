@@ -36,7 +36,7 @@ def main(members_path, codes_path):
         res["message"] = msg
         print(json.dumps(res))
 
-    m = CODE.search(body.upper())
+    m = CODE.search(re.sub(r"\s*-\s*", "-", body.upper()))     # tolerate "ABCD - EFGH - JKLM"
     if not m:
         return done(f"@{user} I could not find a join code in your issue. It looks like `ABCD-EFGH-JKLM` "
                     "(three groups of four letters/digits). Edit the issue and paste your code.")

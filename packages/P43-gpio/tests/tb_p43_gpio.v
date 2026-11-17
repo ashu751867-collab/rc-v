@@ -22,1297 +22,1556 @@ module tb_p43_gpio;
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 1: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 1: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'hf6; buttons = 8'he7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 2: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf6) begin errors = errors + 1; if (errors <= 20) $display("row 2: rdata = %h, expected %h", rdata, 32'hf6); end
         checks = checks + 1; if (leds !== 16'hf6) begin errors = errors + 1; if (errors <= 20) $display("row 2: leds = %h, expected %h", leds, 16'hf6); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 2: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'hb3;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf6) begin errors = errors + 1; if (errors <= 20) $display("row 3: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf6); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 3: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 3: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 3: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h3; buttons = 8'h1a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 4: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 4: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 4: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 4: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h5; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 5: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 5: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 5: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 5: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h3842d3d4; buttons = 8'h11;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 6: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 6: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 6: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 6: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'hb; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 7: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 7: rdata = %h, expected %h", rdata, 32'hb); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 7: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 7: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'hdae81bce; buttons = 8'h1e;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 8: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 8: rdata = %h, expected %h", rdata, 32'hdae81bce); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 8: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 8: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; buttons = 8'h6a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 9: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 9: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 9: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 9: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h5fac142d; buttons = 8'h4e;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4e) begin errors = errors + 1; if (errors <= 20) $display("row 10: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4e) begin errors = errors + 1; if (errors <= 20) $display("row 10: rdata = %h, expected %h", rdata, 32'h4e); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 10: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 10: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h1; buttons = 8'hb;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 11: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 11: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 11: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 11: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hf; buttons = 8'had;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 12: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hb); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 12: rdata = %h, expected %h", rdata, 32'hb); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 12: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 12: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'h1;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 13: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hdae81bce); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 13: rdata = %h, expected %h", rdata, 32'hdae81bce); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 13: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 13: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h0; buttons = 8'hb5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hb5) begin errors = errors + 1; if (errors <= 20) $display("row 14: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hb5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hb5) begin errors = errors + 1; if (errors <= 20) $display("row 14: rdata = %h, expected %h", rdata, 32'hb5); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 14: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 14: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h0; buttons = 8'hf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf) begin errors = errors + 1; if (errors <= 20) $display("row 15: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf) begin errors = errors + 1; if (errors <= 20) $display("row 15: rdata = %h, expected %h", rdata, 32'hf); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 15: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 15: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; buttons = 8'hc;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 16: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 16: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 16: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 16: seg = %h, expected %h", seg, 32'hdae81bce); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h98f3; buttons = 8'h42;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hdae81bce) begin errors = errors + 1; if (errors <= 20) $display("row 17: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hdae81bce); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 17: rdata = %h, expected %h", rdata, 32'h98f3); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 17: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 17: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'he;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 18: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hb); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 18: rdata = %h, expected %h", rdata, 32'hb); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 18: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 18: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1; buttons = 8'h24;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 19: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hb); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 19: rdata = %h, expected %h", rdata, 32'hb); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 19: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 19: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h8; buttons = 8'h21;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 20: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h98f3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 20: rdata = %h, expected %h", rdata, 32'h98f3); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 20: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 20: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1; buttons = 8'h8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 21: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hb); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 21: rdata = %h, expected %h", rdata, 32'hb); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 21: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 21: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'hffd5; buttons = 8'hcd;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hcd) begin errors = errors + 1; if (errors <= 20) $display("row 22: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hcd); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hcd) begin errors = errors + 1; if (errors <= 20) $display("row 22: rdata = %h, expected %h", rdata, 32'hcd); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 22: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 22: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h3168; buttons = 8'h2e;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 23: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hb); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 23: rdata = %h, expected %h", rdata, 32'hb); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 23: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 23: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h124ff354; buttons = 8'h1d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 24: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h98f3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 24: rdata = %h, expected %h", rdata, 32'h98f3); end
         checks = checks + 1; if (leds !== 16'hb) begin errors = errors + 1; if (errors <= 20) $display("row 24: leds = %h, expected %h", leds, 16'hb); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 24: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'h60;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hb) begin errors = errors + 1; if (errors <= 20) $display("row 25: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hb); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 25: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 25: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 25: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 26: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 26: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 26: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 26: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'h18;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 27: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 27: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 27: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 27: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 28: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 28: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 28: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 28: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h4df4; buttons = 8'ha3;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 29: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 29: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 29: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 29: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h3; buttons = 8'hdb;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 30: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 30: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 30: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 30: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h63b; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 31: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 31: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 31: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 31: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h13d; buttons = 8'h15;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 32: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 32: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 32: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 32: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h9d5b; buttons = 8'h81;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 33: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h98f3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 33: rdata = %h, expected %h", rdata, 32'h98f3); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 33: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 33: seg = %h, expected %h", seg, 32'h98f3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'hebda5107; buttons = 8'h1d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h98f3) begin errors = errors + 1; if (errors <= 20) $display("row 34: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h98f3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 34: rdata = %h, expected %h", rdata, 32'hebda5107); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 34: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 34: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h0; buttons = 8'h15;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 35: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 35: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 35: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 35: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'ha; wdata = 32'h8fafada7; buttons = 8'h8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 36: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 36: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 36: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 36: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h2; buttons = 8'h10;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 37: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 37: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 37: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 37: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h1; buttons = 8'h14;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 38: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 38: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 38: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 38: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hac; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 39: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 39: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 39: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 39: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'hd; buttons = 8'h69;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 40: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hebda5107); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 40: rdata = %h, expected %h", rdata, 32'hebda5107); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 40: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 40: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'hd8b4; buttons = 8'h54;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 41: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hebda5107); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 41: rdata = %h, expected %h", rdata, 32'hebda5107); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 41: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 41: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'ha5360a80; buttons = 8'ha0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 42: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 42: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 42: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 42: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h17f961b3; buttons = 8'hc4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 43: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hebda5107); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 43: rdata = %h, expected %h", rdata, 32'hebda5107); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 43: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 43: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h0; buttons = 8'h1c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 44: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 44: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 44: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 44: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hc7; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 45: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 45: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 45: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 45: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h0; buttons = 8'h7a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7a) begin errors = errors + 1; if (errors <= 20) $display("row 46: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7a); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7a) begin errors = errors + 1; if (errors <= 20) $display("row 46: rdata = %h, expected %h", rdata, 32'h7a); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 46: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 46: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1c92; buttons = 8'hf8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 47: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 47: rdata = %h, expected %h", rdata, 32'h4df4); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 47: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 47: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h1d0cab9; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 48: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hff); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 48: rdata = %h, expected %h", rdata, 32'hff); end
         checks = checks + 1; if (leds !== 16'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 48: leds = %h, expected %h", leds, 16'h4df4); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 48: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h89820f9e; buttons = 8'hf5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4df4) begin errors = errors + 1; if (errors <= 20) $display("row 49: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4df4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 49: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 49: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 49: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'h77;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 50: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 50: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 50: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 50: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h47d44b9; buttons = 8'h25;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 51: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 51: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 51: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 51: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h42e4; buttons = 8'hf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 52: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 52: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 52: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 52: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h0; buttons = 8'h4f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 53: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hebda5107); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 53: rdata = %h, expected %h", rdata, 32'hebda5107); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 53: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 53: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'hb5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 54: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 54: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 54: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 54: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hb; wdata = 32'h2f0194c5; buttons = 8'hf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 55: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 55: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 55: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 55: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h82;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 56: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 56: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 56: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 56: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h3; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 57: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 57: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 57: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 57: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h8; wdata = 32'h17; buttons = 8'h5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 58: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 58: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 58: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 58: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'hf; buttons = 8'h6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h6) begin errors = errors + 1; if (errors <= 20) $display("row 59: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h6); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h6) begin errors = errors + 1; if (errors <= 20) $display("row 59: rdata = %h, expected %h", rdata, 32'h6); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 59: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 59: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hd; buttons = 8'h1b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 60: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 60: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 60: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 60: seg = %h, expected %h", seg, 32'hebda5107); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'hf2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hebda5107) begin errors = errors + 1; if (errors <= 20) $display("row 61: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hebda5107); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 61: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 61: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 61: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'hb5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 62: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 62: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 62: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 62: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h6; wdata = 32'he; buttons = 8'h89;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 63: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 63: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 63: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 63: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'hd2ee; buttons = 8'h83;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h83) begin errors = errors + 1; if (errors <= 20) $display("row 64: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h83); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h83) begin errors = errors + 1; if (errors <= 20) $display("row 64: rdata = %h, expected %h", rdata, 32'h83); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 64: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 64: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h0; buttons = 8'h3a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 65: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 65: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 65: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 65: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'ha47b; buttons = 8'h66;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 66: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 66: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 66: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 66: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h0; buttons = 8'h48;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h48) begin errors = errors + 1; if (errors <= 20) $display("row 67: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h48); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h48) begin errors = errors + 1; if (errors <= 20) $display("row 67: rdata = %h, expected %h", rdata, 32'h48); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 67: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 67: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h0; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 68: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 68: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 68: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 68: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'ha; buttons = 8'h8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 69: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 69: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 69: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 69: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'h1a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 70: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 70: rdata = %h, expected %h", rdata, 32'hf9e); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 70: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 70: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'he; buttons = 8'hd5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 71: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 71: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 71: leds = %h, expected %h", leds, 16'hf9e); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 71: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'h13;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf9e) begin errors = errors + 1; if (errors <= 20) $display("row 72: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf9e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 72: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 72: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 72: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'hb; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 73: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 73: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 73: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 73: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'hf8; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 74: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 74: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 74: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 74: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h3; buttons = 8'h3e;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 75: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 75: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 75: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 75: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h7608; buttons = 8'hac;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 76: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 76: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 76: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 76: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hbf; buttons = 8'h7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 77: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 77: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 77: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 77: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h3; buttons = 8'h9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 78: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 78: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 78: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 78: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hba9e15ae; buttons = 8'h62;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 79: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 79: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 79: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 79: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h0; buttons = 8'h3a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 80: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 80: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 80: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 80: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h43;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 81: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 81: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 81: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 81: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h314cb56c; buttons = 8'h6a;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 82: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 82: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 82: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 82: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h9; buttons = 8'h34;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 83: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 83: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 83: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 83: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'h1b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 84: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 84: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 84: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 84: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hff; buttons = 8'h19;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 85: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 85: rdata = %h, expected %h", rdata, 32'hf8); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 85: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 85: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h3; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 86: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 86: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 86: leds = %h, expected %h", leds, 16'hf8); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 86: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h10febe60; buttons = 8'hb;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf8) begin errors = errors + 1; if (errors <= 20) $display("row 87: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 87: rdata = %h, expected %h", rdata, 32'hbe60); end
         checks = checks + 1; if (leds !== 16'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 87: leds = %h, expected %h", leds, 16'hbe60); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 87: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 88: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hbe60); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 88: rdata = %h, expected %h", rdata, 32'hbe60); end
         checks = checks + 1; if (leds !== 16'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 88: leds = %h, expected %h", leds, 16'hbe60); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 88: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hac93fccf; buttons = 8'h88;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 89: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hbe60); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 89: rdata = %h, expected %h", rdata, 32'hbe60); end
         checks = checks + 1; if (leds !== 16'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 89: leds = %h, expected %h", leds, 16'hbe60); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 89: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h73dea0e2; buttons = 8'h99;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 90: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 90: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 90: leds = %h, expected %h", leds, 16'hbe60); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 90: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'hb; buttons = 8'hf0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 91: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 91: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 91: leds = %h, expected %h", leds, 16'hbe60); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 91: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h11; buttons = 8'h12;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h12) begin errors = errors + 1; if (errors <= 20) $display("row 92: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h12); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h12) begin errors = errors + 1; if (errors <= 20) $display("row 92: rdata = %h, expected %h", rdata, 32'h12); end
         checks = checks + 1; if (leds !== 16'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 92: leds = %h, expected %h", leds, 16'hbe60); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 92: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'ha1; buttons = 8'h8d;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hbe60) begin errors = errors + 1; if (errors <= 20) $display("row 93: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hbe60); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 93: rdata = %h, expected %h", rdata, 32'ha1); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 93: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 93: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'hf; buttons = 8'h21;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h21) begin errors = errors + 1; if (errors <= 20) $display("row 94: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h21); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h21) begin errors = errors + 1; if (errors <= 20) $display("row 94: rdata = %h, expected %h", rdata, 32'h21); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 94: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 94: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'hb; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 95: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 95: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 95: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 95: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h1589; buttons = 8'h20;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 96: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 96: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 96: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 96: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h1; buttons = 8'h41;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 97: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 97: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 97: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 97: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h3; buttons = 8'hf4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 98: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'ha1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 98: rdata = %h, expected %h", rdata, 32'ha1); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 98: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 98: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h3; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 99: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'ha1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 99: rdata = %h, expected %h", rdata, 32'ha1); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 99: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 99: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h0; buttons = 8'h1b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1b) begin errors = errors + 1; if (errors <= 20) $display("row 100: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1b) begin errors = errors + 1; if (errors <= 20) $display("row 100: rdata = %h, expected %h", rdata, 32'h1b); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 100: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 100: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h32664659; buttons = 8'he2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 101: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 101: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 101: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 101: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'h22;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h22) begin errors = errors + 1; if (errors <= 20) $display("row 102: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h22); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h22) begin errors = errors + 1; if (errors <= 20) $display("row 102: rdata = %h, expected %h", rdata, 32'h22); end
         checks = checks + 1; if (leds !== 16'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 102: leds = %h, expected %h", leds, 16'ha1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 102: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h3b;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'ha1) begin errors = errors + 1; if (errors <= 20) $display("row 103: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'ha1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 103: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 103: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 103: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'he; buttons = 8'hcf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 104: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'he) begin errors = errors + 1; if (errors <= 20) $display("row 104: rdata = %h, expected %h", rdata, 32'he); end
         checks = checks + 1; if (leds !== 16'he) begin errors = errors + 1; if (errors <= 20) $display("row 104: leds = %h, expected %h", leds, 16'he); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 104: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h0; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 105: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 105: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'he) begin errors = errors + 1; if (errors <= 20) $display("row 105: leds = %h, expected %h", leds, 16'he); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 105: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'h12;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 106: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 106: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'he) begin errors = errors + 1; if (errors <= 20) $display("row 106: leds = %h, expected %h", leds, 16'he); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 106: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h3; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 107: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hff); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 107: rdata = %h, expected %h", rdata, 32'hff); end
         checks = checks + 1; if (leds !== 16'he) begin errors = errors + 1; if (errors <= 20) $display("row 107: leds = %h, expected %h", leds, 16'he); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 107: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'h4c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'he) begin errors = errors + 1; if (errors <= 20) $display("row 108: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'he); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 108: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 108: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 108: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'he; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 109: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 109: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 109: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 109: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h0; buttons = 8'hb0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 110: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 110: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 110: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 110: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h3; buttons = 8'he8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'he8) begin errors = errors + 1; if (errors <= 20) $display("row 111: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'he8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'he8) begin errors = errors + 1; if (errors <= 20) $display("row 111: rdata = %h, expected %h", rdata, 32'he8); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 111: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 111: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h37fa42ed; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 112: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 112: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 112: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 112: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h3; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 113: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 113: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 113: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 113: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h0; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 114: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 114: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 114: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 114: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1; buttons = 8'hf2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hf2) begin errors = errors + 1; if (errors <= 20) $display("row 115: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hf2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hf2) begin errors = errors + 1; if (errors <= 20) $display("row 115: rdata = %h, expected %h", rdata, 32'hf2); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 115: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 115: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h3; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 116: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 116: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 116: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 116: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h5; buttons = 8'h35;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 117: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 117: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 117: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 117: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hd3d8; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 118: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 118: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 118: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 118: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h82; buttons = 8'h78;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 119: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 119: rdata = %h, expected %h", rdata, 32'h82); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 119: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 119: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h3; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 120: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 120: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 120: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 120: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hd; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 121: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h82); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 121: rdata = %h, expected %h", rdata, 32'h82); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 121: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 121: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h1; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 122: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 122: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 122: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 122: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h9; buttons = 8'h11;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 123: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 123: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 123: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 123: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'ha6; buttons = 8'hdb;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 124: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h82); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 124: rdata = %h, expected %h", rdata, 32'h82); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 124: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 124: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h7abf3c87; buttons = 8'h27;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 125: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7abf3c87) begin errors = errors + 1; if (errors <= 20) $display("row 125: rdata = %h, expected %h", rdata, 32'h7abf3c87); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 125: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h7abf3c87) begin errors = errors + 1; if (errors <= 20) $display("row 125: seg = %h, expected %h", seg, 32'h7abf3c87); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h0; buttons = 8'hf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 126: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 126: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 126: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h7abf3c87) begin errors = errors + 1; if (errors <= 20) $display("row 126: seg = %h, expected %h", seg, 32'h7abf3c87); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'h7c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7abf3c87) begin errors = errors + 1; if (errors <= 20) $display("row 127: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7abf3c87); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 127: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 127: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 127: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'hc0; buttons = 8'h1f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1f) begin errors = errors + 1; if (errors <= 20) $display("row 128: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1f); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1f) begin errors = errors + 1; if (errors <= 20) $display("row 128: rdata = %h, expected %h", rdata, 32'h1f); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 128: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 128: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h2e250861; buttons = 8'h8f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 129: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2e250861) begin errors = errors + 1; if (errors <= 20) $display("row 129: rdata = %h, expected %h", rdata, 32'h2e250861); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 129: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h2e250861) begin errors = errors + 1; if (errors <= 20) $display("row 129: seg = %h, expected %h", seg, 32'h2e250861); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 130: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h82); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 130: rdata = %h, expected %h", rdata, 32'h82); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 130: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h2e250861) begin errors = errors + 1; if (errors <= 20) $display("row 130: seg = %h, expected %h", seg, 32'h2e250861); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h55; buttons = 8'h54;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2e250861) begin errors = errors + 1; if (errors <= 20) $display("row 131: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2e250861); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h55) begin errors = errors + 1; if (errors <= 20) $display("row 131: rdata = %h, expected %h", rdata, 32'h55); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 131: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h55) begin errors = errors + 1; if (errors <= 20) $display("row 131: seg = %h, expected %h", seg, 32'h55); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'hfe;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h55) begin errors = errors + 1; if (errors <= 20) $display("row 132: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h55); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 132: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 132: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 132: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'ha6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 133: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 133: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 133: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 133: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hca26ab1d; buttons = 8'h46;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 134: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h82); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 134: rdata = %h, expected %h", rdata, 32'h82); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 134: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 134: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hc; buttons = 8'h10;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 135: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h82); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 135: rdata = %h, expected %h", rdata, 32'h82); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 135: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 135: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'hb; buttons = 8'h1c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1c) begin errors = errors + 1; if (errors <= 20) $display("row 136: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1c); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1c) begin errors = errors + 1; if (errors <= 20) $display("row 136: rdata = %h, expected %h", rdata, 32'h1c); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 136: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 136: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h0; buttons = 8'ha9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 137: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 137: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 137: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 137: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h3; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 138: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 138: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 138: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 138: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h6a43170b; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h80) begin errors = errors + 1; if (errors <= 20) $display("row 139: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h80); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h80) begin errors = errors + 1; if (errors <= 20) $display("row 139: rdata = %h, expected %h", rdata, 32'h80); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 139: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 139: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'hfe2d753e; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 140: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 140: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h82) begin errors = errors + 1; if (errors <= 20) $display("row 140: leds = %h, expected %h", leds, 16'h82); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 140: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h82) begin errors = errors + 1; if (errors <= 20) $display("row 141: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h82); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 141: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 141: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 141: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hc; wdata = 32'hb653; buttons = 8'h92;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 142: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 142: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 142: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 142: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h5633; buttons = 8'h14;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 143: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 143: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 144: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 144: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 144: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 144: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'ha6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'ha6) begin errors = errors + 1; if (errors <= 20) $display("row 145: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'ha6); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'ha6) begin errors = errors + 1; if (errors <= 20) $display("row 145: rdata = %h, expected %h", rdata, 32'ha6); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 145: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 145: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h3713; buttons = 8'h15;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h15) begin errors = errors + 1; if (errors <= 20) $display("row 146: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h15); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h15) begin errors = errors + 1; if (errors <= 20) $display("row 146: rdata = %h, expected %h", rdata, 32'h15); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 146: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 146: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h79;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 147: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 147: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h0) begin errors = errors + 1; if (errors <= 20) $display("row 147: leds = %h, expected %h", leds, 16'h0); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 147: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h6; buttons = 8'h2e;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 148: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h6) begin errors = errors + 1; if (errors <= 20) $display("row 148: rdata = %h, expected %h", rdata, 32'h6); end
         checks = checks + 1; if (leds !== 16'h6) begin errors = errors + 1; if (errors <= 20) $display("row 148: leds = %h, expected %h", leds, 16'h6); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 148: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1073; buttons = 8'hd4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 149: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 149: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h6) begin errors = errors + 1; if (errors <= 20) $display("row 149: leds = %h, expected %h", leds, 16'h6); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 149: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h514f; buttons = 8'h70;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h6) begin errors = errors + 1; if (errors <= 20) $display("row 150: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h6); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h514f) begin errors = errors + 1; if (errors <= 20) $display("row 150: rdata = %h, expected %h", rdata, 32'h514f); end
         checks = checks + 1; if (leds !== 16'h514f) begin errors = errors + 1; if (errors <= 20) $display("row 150: leds = %h, expected %h", leds, 16'h514f); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 150: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hf7; buttons = 8'hbe;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h514f) begin errors = errors + 1; if (errors <= 20) $display("row 151: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h514f); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h514f) begin errors = errors + 1; if (errors <= 20) $display("row 151: rdata = %h, expected %h", rdata, 32'h514f); end
         checks = checks + 1; if (leds !== 16'h514f) begin errors = errors + 1; if (errors <= 20) $display("row 151: leds = %h, expected %h", leds, 16'h514f); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 151: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h3; buttons = 8'hc0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 152: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 152: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h514f) begin errors = errors + 1; if (errors <= 20) $display("row 152: leds = %h, expected %h", leds, 16'h514f); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 152: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'h61;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h514f) begin errors = errors + 1; if (errors <= 20) $display("row 153: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h514f); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 153: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 153: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 153: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'ha03d; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 154: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 154: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 154: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 154: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h0; buttons = 8'hc2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 155: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 155: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 155: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 155: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h5d48; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 156: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 156: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 156: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 156: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h3; buttons = 8'hc9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 157: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 157: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 157: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 157: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h77cd; buttons = 8'h28;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 158: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 158: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 158: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 158: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'hae70; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 159: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 159: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 159: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 159: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'hdb;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hdb) begin errors = errors + 1; if (errors <= 20) $display("row 160: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hdb); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hdb) begin errors = errors + 1; if (errors <= 20) $display("row 160: rdata = %h, expected %h", rdata, 32'hdb); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 160: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 160: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'h1c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 161: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 161: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h3) begin errors = errors + 1; if (errors <= 20) $display("row 161: leds = %h, expected %h", leds, 16'h3); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 161: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h7; buttons = 8'h3c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 162: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 162: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 162: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 162: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h2; buttons = 8'h62;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 163: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 163: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 163: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 163: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h7; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 164: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 164: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 164: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 164: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'hf; buttons = 8'hb6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 165: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 165: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 165: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 165: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 166: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hff); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 166: rdata = %h, expected %h", rdata, 32'hff); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 166: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 166: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h0; buttons = 8'hbc;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 167: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 167: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 167: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 167: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'h8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 168: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 168: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 168: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 168: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h9; buttons = 8'h15;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 169: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 169: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 169: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 169: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'ha2126d69; buttons = 8'h16;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 170: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'ha2126d69) begin errors = errors + 1; if (errors <= 20) $display("row 170: rdata = %h, expected %h", rdata, 32'ha2126d69); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 170: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'ha2126d69) begin errors = errors + 1; if (errors <= 20) $display("row 170: seg = %h, expected %h", seg, 32'ha2126d69); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hd27a6488; buttons = 8'h10;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 171: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 171: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'h7) begin errors = errors + 1; if (errors <= 20) $display("row 171: leds = %h, expected %h", leds, 16'h7); end
         checks = checks + 1; if (seg !== 32'ha2126d69) begin errors = errors + 1; if (errors <= 20) $display("row 171: seg = %h, expected %h", seg, 32'ha2126d69); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'hab;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 172: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 172: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 172: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'ha2126d69) begin errors = errors + 1; if (errors <= 20) $display("row 172: seg = %h, expected %h", seg, 32'ha2126d69); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h0; buttons = 8'h70;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'ha2126d69) begin errors = errors + 1; if (errors <= 20) $display("row 173: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'ha2126d69); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 173: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 173: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 173: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h1; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 174: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 174: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 174: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 174: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h91; buttons = 8'h14;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 175: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 175: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 175: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 175: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h6d28; buttons = 8'hcd;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 176: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 176: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 176: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 176: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; buttons = 8'hc2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hc2) begin errors = errors + 1; if (errors <= 20) $display("row 177: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hc2); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hc2) begin errors = errors + 1; if (errors <= 20) $display("row 177: rdata = %h, expected %h", rdata, 32'hc2); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 177: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 177: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'h4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 178: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 178: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 178: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 178: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h0; buttons = 8'h13;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 179: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 179: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 179: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 179: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h37; buttons = 8'h14;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 180: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 180: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 180: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 180: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'hd; buttons = 8'h59;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 181: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 181: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 181: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 181: seg = %h, expected %h", seg, 32'h0); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 182: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 182: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 182: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 182: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h25bfc640; buttons = 8'he2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 183: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 183: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 183: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 183: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; buttons = 8'h48;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 184: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 184: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 184: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 184: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h3; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 185: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 185: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 185: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 185: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h34; buttons = 8'h4f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 186: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 186: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h1) begin errors = errors + 1; if (errors <= 20) $display("row 186: leds = %h, expected %h", leds, 16'h1); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 186: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h5; buttons = 8'h47;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 187: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 187: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 187: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 187: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h1; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 188: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 188: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 188: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 188: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h5a98a5cf; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 189: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hff); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hff) begin errors = errors + 1; if (errors <= 20) $display("row 189: rdata = %h, expected %h", rdata, 32'hff); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 189: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 189: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h6; buttons = 8'hf;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 190: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 190: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 190: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 190: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h4ad52dee; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 191: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 191: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 191: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 191: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h937a87cd; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 192: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 192: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 192: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 192: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; buttons = 8'h5e;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5e) begin errors = errors + 1; if (errors <= 20) $display("row 193: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5e); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5e) begin errors = errors + 1; if (errors <= 20) $display("row 193: rdata = %h, expected %h", rdata, 32'h5e); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 193: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 193: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h68; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 194: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 194: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 194: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 194: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1; buttons = 8'h16;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h16) begin errors = errors + 1; if (errors <= 20) $display("row 195: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h16); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h16) begin errors = errors + 1; if (errors <= 20) $display("row 195: rdata = %h, expected %h", rdata, 32'h16); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 195: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 195: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h4069; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 196: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 196: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 196: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 196: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h3; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 197: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 197: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 197: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 197: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'h77;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 198: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 198: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 198: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 198: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h9; buttons = 8'hc;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 199: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 199: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 199: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 199: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'hc6; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 200: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 200: rdata = %h, expected %h", rdata, 32'hc6); end
         checks = checks + 1; if (leds !== 16'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 200: leds = %h, expected %h", leds, 16'hc6); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 200: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h6054; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 201: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 201: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 201: leds = %h, expected %h", leds, 16'hc6); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 201: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'hf2; buttons = 8'h32;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h32) begin errors = errors + 1; if (errors <= 20) $display("row 202: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h32); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h32) begin errors = errors + 1; if (errors <= 20) $display("row 202: rdata = %h, expected %h", rdata, 32'h32); end
         checks = checks + 1; if (leds !== 16'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 202: leds = %h, expected %h", leds, 16'hc6); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 202: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'he;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 203: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hc6); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 203: rdata = %h, expected %h", rdata, 32'hc6); end
         checks = checks + 1; if (leds !== 16'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 203: leds = %h, expected %h", leds, 16'hc6); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 203: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'hc; buttons = 8'h9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h9) begin errors = errors + 1; if (errors <= 20) $display("row 204: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h9); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h9) begin errors = errors + 1; if (errors <= 20) $display("row 204: rdata = %h, expected %h", rdata, 32'h9); end
         checks = checks + 1; if (leds !== 16'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 204: leds = %h, expected %h", leds, 16'hc6); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 204: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h5; buttons = 8'hc5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hc6) begin errors = errors + 1; if (errors <= 20) $display("row 205: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hc6); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 205: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 205: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 205: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'hc8; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 206: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hc8) begin errors = errors + 1; if (errors <= 20) $display("row 206: rdata = %h, expected %h", rdata, 32'hc8); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 206: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'hc8) begin errors = errors + 1; if (errors <= 20) $display("row 206: seg = %h, expected %h", seg, 32'hc8); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h68;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 207: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 207: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 207: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'hc8) begin errors = errors + 1; if (errors <= 20) $display("row 207: seg = %h, expected %h", seg, 32'hc8); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'had;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hc8) begin errors = errors + 1; if (errors <= 20) $display("row 208: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hc8); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 208: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 208: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 208: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h4b99; buttons = 8'h87;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h87) begin errors = errors + 1; if (errors <= 20) $display("row 209: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h87); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h87) begin errors = errors + 1; if (errors <= 20) $display("row 209: rdata = %h, expected %h", rdata, 32'h87); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 209: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 209: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h5f1c; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 210: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 210: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 210: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 210: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h47; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 211: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 211: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 211: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 211: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hfd2a; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 212: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 212: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 212: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 212: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'hf625; buttons = 8'h2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 213: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 213: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 213: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 213: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h8f2a332a; buttons = 8'hd2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 214: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 214: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 214: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 214: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'h4;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 215: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 215: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 215: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 215: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 216: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 216: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 216: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 216: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h3; buttons = 8'hba;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 217: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 217: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 217: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 217: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1; buttons = 8'h1c;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 218: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 218: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 218: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 218: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h85; buttons = 8'h80;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 219: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 219: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 219: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 219: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h0; buttons = 8'h3;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 220: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 220: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 220: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 220: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h30015c97; buttons = 8'h6;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 221: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 221: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 221: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 221: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h1; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 222: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 222: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h5) begin errors = errors + 1; if (errors <= 20) $display("row 222: leds = %h, expected %h", leds, 16'h5); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 222: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h3904; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 223: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 223: rdata = %h, expected %h", rdata, 32'h3904); end
         checks = checks + 1; if (leds !== 16'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 223: leds = %h, expected %h", leds, 16'h3904); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 223: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h3; buttons = 8'h70;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h70) begin errors = errors + 1; if (errors <= 20) $display("row 224: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h70); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h70) begin errors = errors + 1; if (errors <= 20) $display("row 224: rdata = %h, expected %h", rdata, 32'h70); end
         checks = checks + 1; if (leds !== 16'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 224: leds = %h, expected %h", leds, 16'h3904); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 224: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h0; wdata = 32'h9e; buttons = 8'he;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 225: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3904); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 225: rdata = %h, expected %h", rdata, 32'h3904); end
         checks = checks + 1; if (leds !== 16'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 225: leds = %h, expected %h", leds, 16'h3904); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 225: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hf653a840; buttons = 8'h96;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 226: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3904); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 226: rdata = %h, expected %h", rdata, 32'h3904); end
         checks = checks + 1; if (leds !== 16'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 226: leds = %h, expected %h", leds, 16'h3904); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 226: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h6; buttons = 8'he0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 227: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 227: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 227: leds = %h, expected %h", leds, 16'h3904); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 227: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h1; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 228: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 228: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 228: leds = %h, expected %h", leds, 16'h3904); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 228: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h84fc; buttons = 8'hf8;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 229: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3904); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 229: rdata = %h, expected %h", rdata, 32'h3904); end
         checks = checks + 1; if (leds !== 16'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 229: leds = %h, expected %h", leds, 16'h3904); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 229: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'h4; buttons = 8'hbd;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3904) begin errors = errors + 1; if (errors <= 20) $display("row 230: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3904); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 230: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 230: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 230: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h1b; buttons = 8'h33;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h33) begin errors = errors + 1; if (errors <= 20) $display("row 231: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h33); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h33) begin errors = errors + 1; if (errors <= 20) $display("row 231: rdata = %h, expected %h", rdata, 32'h33); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 231: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 231: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'hc448eb19; buttons = 8'ha9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'ha9) begin errors = errors + 1; if (errors <= 20) $display("row 232: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'ha9); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'ha9) begin errors = errors + 1; if (errors <= 20) $display("row 232: rdata = %h, expected %h", rdata, 32'ha9); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 232: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 232: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'h1; buttons = 8'hb9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 233: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 233: rdata = %h, expected %h", rdata, 32'h1); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 233: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 233: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h2; wdata = 32'h0; buttons = 8'h90;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h90) begin errors = errors + 1; if (errors <= 20) $display("row 234: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h90); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h90) begin errors = errors + 1; if (errors <= 20) $display("row 234: rdata = %h, expected %h", rdata, 32'h90); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 234: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 234: seg = %h, expected %h", seg, 32'h1); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'h3; buttons = 8'hfe;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1) begin errors = errors + 1; if (errors <= 20) $display("row 235: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 235: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 235: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 235: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h6; wdata = 32'h0; buttons = 8'hb5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 236: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 236: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 236: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 236: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h1; wdata = 32'hcabe9712; buttons = 8'hff;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 237: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 237: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 237: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 237: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'h3; buttons = 8'h18;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 238: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 238: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 238: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 238: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hd; wdata = 32'he; buttons = 8'hc9;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 239: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 239: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 239: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 239: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'h7060048a; buttons = 8'h26;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 240: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 240: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 240: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 240: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'hf; wdata = 32'h1; buttons = 8'h34;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 241: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 241: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 241: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 241: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h0; buttons = 8'h54;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 242: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 242: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 242: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 242: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h1; wdata = 32'hbb1db900; buttons = 8'h75;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 243: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 243: rdata = %h, expected %h", rdata, 32'h3); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 243: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 243: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 244: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h0); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h0) begin errors = errors + 1; if (errors <= 20) $display("row 244: rdata = %h, expected %h", rdata, 32'h0); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 244: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 244: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'h2; wdata = 32'h6f; buttons = 8'h5;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 245: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h5); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h5) begin errors = errors + 1; if (errors <= 20) $display("row 245: rdata = %h, expected %h", rdata, 32'h5); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 245: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 245: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h4; buttons = 8'h84;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 246: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 246: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 246: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 246: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'h84;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h84) begin errors = errors + 1; if (errors <= 20) $display("row 247: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h84); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h84) begin errors = errors + 1; if (errors <= 20) $display("row 247: rdata = %h, expected %h", rdata, 32'h84); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 247: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 247: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h45af; buttons = 8'h50;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 248: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 248: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 248: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 248: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h5450f419; buttons = 8'h72;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 249: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 249: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 249: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 249: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h0; re = 1'h1; ridx = 4'hf; wdata = 32'h77; buttons = 8'h41;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 250: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 250: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 250: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 250: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h5d5870cb; buttons = 8'he2;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 251: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 251: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 251: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 251: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'hac92ddb7; buttons = 8'hec;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 252: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 252: rdata = %h, expected %h", rdata, 32'h4); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 252: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 252: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h0; buttons = 8'h97;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h97) begin errors = errors + 1; if (errors <= 20) $display("row 253: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h97); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h97) begin errors = errors + 1; if (errors <= 20) $display("row 253: rdata = %h, expected %h", rdata, 32'h97); end
         checks = checks + 1; if (leds !== 16'h4) begin errors = errors + 1; if (errors <= 20) $display("row 253: leds = %h, expected %h", leds, 16'h4); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 253: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h0; wdata = 32'hcf60; buttons = 8'he1;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h4) begin errors = errors + 1; if (errors <= 20) $display("row 254: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h4); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 254: rdata = %h, expected %h", rdata, 32'hcf60); end
         checks = checks + 1; if (leds !== 16'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 254: leds = %h, expected %h", leds, 16'hcf60); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 254: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'h1f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h1f) begin errors = errors + 1; if (errors <= 20) $display("row 255: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h1f); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h1f) begin errors = errors + 1; if (errors <= 20) $display("row 255: rdata = %h, expected %h", rdata, 32'h1f); end
         checks = checks + 1; if (leds !== 16'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 255: leds = %h, expected %h", leds, 16'hcf60); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 255: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h0; wdata = 32'h6695; buttons = 8'h0;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 256: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'hcf60); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 256: rdata = %h, expected %h", rdata, 32'hcf60); end
         checks = checks + 1; if (leds !== 16'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 256: leds = %h, expected %h", leds, 16'hcf60); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 256: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h1; buttons = 8'h7;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 257: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h7); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h7) begin errors = errors + 1; if (errors <= 20) $display("row 257: rdata = %h, expected %h", rdata, 32'h7); end
         checks = checks + 1; if (leds !== 16'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 257: leds = %h, expected %h", leds, 16'hcf60); end
         checks = checks + 1; if (seg !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 257: seg = %h, expected %h", seg, 32'h3); end
         rst = 1'h0; sel = 1'h1; we = 1'h1; re = 1'h0; ridx = 4'h1; wdata = 32'hd32aeb27; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h3) begin errors = errors + 1; if (errors <= 20) $display("row 258: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h3); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'hd32aeb27) begin errors = errors + 1; if (errors <= 20) $display("row 258: rdata = %h, expected %h", rdata, 32'hd32aeb27); end
         checks = checks + 1; if (leds !== 16'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 258: leds = %h, expected %h", leds, 16'hcf60); end
         checks = checks + 1; if (seg !== 32'hd32aeb27) begin errors = errors + 1; if (errors <= 20) $display("row 258: seg = %h, expected %h", seg, 32'hd32aeb27); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'hf; wdata = 32'he5ab; buttons = 8'h7f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 259: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h2b); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h2b) begin errors = errors + 1; if (errors <= 20) $display("row 259: rdata = %h, expected %h", rdata, 32'h2b); end
         checks = checks + 1; if (leds !== 16'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 259: leds = %h, expected %h", leds, 16'hcf60); end
         checks = checks + 1; if (seg !== 32'hd32aeb27) begin errors = errors + 1; if (errors <= 20) $display("row 259: seg = %h, expected %h", seg, 32'hd32aeb27); end
         rst = 1'h0; sel = 1'h0; we = 1'h0; re = 1'h0; ridx = 4'h2; wdata = 32'h3; buttons = 8'h9f;
-        #1 clk = 1; #1 clk = 0; #1;
+        #1; checks = checks + 1; if (rdata !== 32'h9f) begin errors = errors + 1; if (errors <= 20) $display("row 260: rdata = %h before the clock edge, expected %h (rdata must not wait for the clock)", rdata, 32'h9f); end
+        clk = 1; #1 clk = 0; #1;
         checks = checks + 1; if (rdata !== 32'h9f) begin errors = errors + 1; if (errors <= 20) $display("row 260: rdata = %h, expected %h", rdata, 32'h9f); end
         checks = checks + 1; if (leds !== 16'hcf60) begin errors = errors + 1; if (errors <= 20) $display("row 260: leds = %h, expected %h", leds, 16'hcf60); end
         checks = checks + 1; if (seg !== 32'hd32aeb27) begin errors = errors + 1; if (errors <= 20) $display("row 260: seg = %h, expected %h", seg, 32'hd32aeb27); end
