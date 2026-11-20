@@ -587,7 +587,7 @@ Do not rename, move or delete the input and output pins.</string>
         </entry>
         <entry>
           <string>Inputs</string>
-          <int>4</int>
+          <int>3</int>
         </entry>
       </elementAttributes>
       <pos x="740" y="-20"/>
@@ -788,20 +788,6 @@ Do not rename, move or delete the input and output pins.</string>
       </elementAttributes>
       <pos x="580" y="340"/>
     </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>z15_14</string>
-        </entry>
-      </elementAttributes>
-      <pos x="680" y="60"/>
-    </visualElement>
   </visualElements>
   <wires>
     <wire>
@@ -815,6 +801,10 @@ Do not rename, move or delete the input and output pins.</string>
     <wire>
       <p1 x="700" y="0"/>
       <p2 x="740" y="0"/>
+    </wire>
+    <wire>
+      <p1 x="820" y="0"/>
+      <p2 x="860" y="0"/>
     </wire>
     <wire>
       <p1 x="420" y="580"/>
@@ -886,11 +876,7 @@ Do not rename, move or delete the input and output pins.</string>
     </wire>
     <wire>
       <p1 x="680" y="20"/>
-      <p2 x="720" y="20"/>
-    </wire>
-    <wire>
-      <p1 x="820" y="20"/>
-      <p2 x="860" y="20"/>
+      <p2 x="740" y="20"/>
     </wire>
     <wire>
       <p1 x="880" y="280"/>
@@ -969,10 +955,6 @@ Do not rename, move or delete the input and output pins.</string>
       <p2 x="460" y="360"/>
     </wire>
     <wire>
-      <p1 x="720" y="40"/>
-      <p2 x="740" y="40"/>
-    </wire>
-    <wire>
       <p1 x="240" y="300"/>
       <p2 x="260" y="300"/>
     </wire>
@@ -1049,14 +1031,6 @@ Do not rename, move or delete the input and output pins.</string>
       <p2 x="460" y="380"/>
     </wire>
     <wire>
-      <p1 x="680" y="60"/>
-      <p2 x="740" y="60"/>
-    </wire>
-    <wire>
-      <p1 x="720" y="20"/>
-      <p2 x="720" y="40"/>
-    </wire>
-    <wire>
       <p1 x="580" y="400"/>
       <p2 x="580" y="480"/>
     </wire>
@@ -1085,7 +1059,7 @@ Do not rename, move or delete the input and output pins.</string>
       <p2 x="460" y="620"/>
     </wire>
     <wire>
-      <p1 x="860" y="20"/>
+      <p1 x="860" y="0"/>
       <p2 x="860" y="100"/>
     </wire>
   </wires>
