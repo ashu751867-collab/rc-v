@@ -12,6 +12,9 @@ module p32_read_mux (
     output wire [31:0] rdata
 );
 
-    assign rdata = 32'd0;   // placeholder
+    assign rdata =
+        ({32{sel_rom}} & rom_d) |
+        ({32{sel_ram}} & ram_d) |
+        ({32{sel_io} } & io_d);
 
 endmodule

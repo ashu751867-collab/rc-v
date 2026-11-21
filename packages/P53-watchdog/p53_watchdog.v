@@ -4,15 +4,15 @@
 //
 // Counts down while enabled. At 0 it sets the sticky bite flag and reloads from LOAD.
 // A write to KICK reloads the counter from LOAD (wins over a bite on the same cycle).
-// A write to CTRL with bit0 = 1 arms the watchdog: it also reloads the counter.
+// A write to CTRL with bit0 = 1 arms the watchdog: it reloads the counter, no bite yet.
 // A write to CTRL with bit0 = 0 stops it at once: the counter freezes.
 // A write to STATUS clears the bite flag, unless the counter bites on that same cycle.
 // A write to LOAD changes LOAD only; the counter takes the new value at the next reload.
 // rst clears everything.
 //
-// Everything, including rdata, changes only on the rising edge of clk.
-// rdata shows the register selected by ridx as it is AFTER that edge (the reading
-// does not depend on sel/re, and rdata is not cleared when the block is idle).
+// The registers (load, count, en, bite) change only on the rising edge of clk.
+// rdata is NOT clocked: it follows ridx at once and shows the selected register
+// (it does not depend on sel/re, and it is not cleared when the block is idle).
 module p53_watchdog (
     input  wire        clk,
     input  wire        rst,
@@ -33,10 +33,11 @@ module p53_watchdog (
     wire wr_stat = wr & (ridx == 4'd2);
     wire kick    = wr & (ridx == 4'd4);
 
-    // values as they are after this clock edge
+    // values as they will be after this clock edge
     wire        n_en   = wr_ctrl ? wdata[0] : en;
     wire [31:0] n_load = wr_load ? wdata    : load;
-    wire        expire = n_en & (count == 32'd0);
+    // a bite needs the dog to be running before AND after this edge
+    wire        expire = en & n_en & (count == 32'd0);
 
     reg [31:0] n_count;
     reg        n_bite;
@@ -67,21 +68,24 @@ module p53_watchdog (
             count <= 32'd0;
             en    <= 1'b0;
             bite  <= 1'b0;
-            rdata <= 32'd0;
         end else begin
             load  <= n_load;
             en    <= n_en;
             count <= n_count;
             bite  <= n_bite;
-            case (ridx)
-                4'd0:    rdata <= n_load;
-                4'd1:    rdata <= {31'd0, n_en};
-                4'd2:    rdata <= {31'd0, n_bite};
-                4'd3:    rdata <= n_count;
-                4'd15:   rdata <= 32'd53;
-                default: rdata <= 32'd0;
-            endcase
         end
+    end
+
+    // read data: combinational, follows ridx immediately
+    always @* begin
+        case (ridx)
+            4'd0:    rdata = load;
+            4'd1:    rdata = {31'd0, en};
+            4'd2:    rdata = {31'd0, bite};
+            4'd3:    rdata = count;
+            4'd15:   rdata = 32'd53;
+            default: rdata = 32'd0;
+        endcase
     end
 
 endmodule

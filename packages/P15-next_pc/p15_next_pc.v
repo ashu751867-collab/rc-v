@@ -1,7 +1,3 @@
-// P15 Next-PC selector
-// Keep the module name and the port list exactly as they are.
-// You may change 'output wire' to 'output reg' if you assign an output in an always block.
-// Delete the placeholder assigns and write your design.
 module p15_next_pc (
     input  wire [2:0] sel,
     input  wire [31:0] pc4,
@@ -12,6 +8,10 @@ module p15_next_pc (
     output wire [31:0] npc
 );
 
-    assign npc = 32'd0;   // placeholder
+    assign npc = (sel == 3'd1) ? target :
+                 (sel == 3'd2) ? (jalr_y & 32'hFFFFFFFE) :
+                 (sel == 3'd3) ? mtvec :
+                 (sel == 3'd4) ? mepc :
+                                 pc4;
 
 endmodule

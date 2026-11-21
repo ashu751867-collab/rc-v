@@ -11,10 +11,10 @@ module p31_addr_decode (
     output wire [3:0] ridx
 );
 
-    assign sel_rom = 1'd0;   // placeholder
-    assign sel_ram = 1'd0;   // placeholder
-    assign sel_io = 1'd0;   // placeholder
-    assign dev = 5'd0;   // placeholder
-    assign ridx = 4'd0;   // placeholder
+    assign sel_rom = (addr >= 32'h00000000) && (addr <= 32'h0000FFFF);
+    assign sel_ram = (addr >= 32'h00010000) && (addr <= 32'h00013FFF);
+    assign sel_io  = (addr >= 32'h00020000) && (addr <= 32'h000207FF);
+    assign dev     = addr[10:6];
+    assign ridx    = addr[5:2];
 
 endmodule
