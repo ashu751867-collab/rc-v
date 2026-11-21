@@ -1,178 +1,969 @@
 <?xml version="1.0" encoding="utf-8"?>
 <circuit>
-  <version>1</version>
+  <version>2</version>
   <attributes/>
   <visualElements>
-    <visualElement><elementName>In</elementName><elementAttributes><entry><string>Label</string><string>instr</string></entry><entry><string>Bits</string><int>32</int></entry></elementAttributes><pos x="100" y="100"/></visualElement>
-    <visualElement><elementName>Out</elementName><elementAttributes><entry><string>Label</string><string>imm_b</string></entry><entry><string>Bits</string><int>32</int></entry></elementAttributes><pos x="900" y="100"/></visualElement>
-    <visualElement><elementName>Out</elementName><elementAttributes><entry><string>Label</string><string>imm_j</string></entry><entry><string>Bits</string><int>32</int></entry></elementAttributes><pos x="900" y="160"/></visualElement>
-    <visualElement><elementName>Out</elementName><elementAttributes><entry><string>Label</string><string>imm_u</string></entry><entry><string>Bits</string><int>32</int></entry></elementAttributes><pos x="900" y="220"/></visualElement>
-    <visualElement><elementName>Text</elementName><elementAttributes><entry><string>Description</string><string>P19 Immediate generator B/J/U - Digital task
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>P19 Immediate generator B/J/U - Digital task
 Full size, Splitters only.
 Allowed parts: Splitter, Tunnel, Const, Ground, VDD, Text, In, Out, Clock
-Do not rename, move or delete the input and output pins.</string></entry></elementAttributes><pos x="100" y="40"/></visualElement>
-    <visualElement><elementName>Testcase</elementName><elementAttributes><entry><string>Label</string><string>public tests</string></entry><entry><string>Testdata</string><testData><dataString>instr imm_b imm_j imm_u
-2433628791 4294963476 4294848784 2433626112
-3597904163 4294964594 4294159718 3597901824
-24 0 0 0
-748659713 712 1026760 748658688
-3345252530 4294966368 4294214774 3345252352
-330282618 300 1028410 330280960
-2147483647 4094 1048574 2147479552
-3443834612 4294966492 4294227156 3443830784
-26 0 0 0
-4294967295 4294967294 4294967294 4294963200
-3456564979 4294966524 4294374624 3456561152
-3436482677 4294964416 4294221004 3436482560
-2333799514 4294963368 4294637744 2333798400
-727166592 2748 502452 727162880
-2147483647 4094 1048574 2147479552
-3684458624 4294966688 4294733240 3684458496
-2161881003 4294965278 4294682636 2161876992
-13 0 0 0
-4294967295 4294967294 4294967294 4294963200
-3297552462 4294964304 4294747208 3297550336
-12 0 0 0
-0 0 0 0
-2036581071 3972 247702 2036580352
-3454259841 4294966468 4294169822 3454259200
-3210936607 4294964194 4294116342 3210936320
-2115750071 4080 774112 2115747840
-210209559 214 491720 210206720
-1141302833 1100 451648 1141301248
-724638078 690 72370 724635648
-4284617292 4294965220 4294055926 4284616704
-2147483648 4294963200 4293918720 2147483648
-2219221638 4294965316 4294352964 2219220992
-3048418902 4294964060 4294126426 3048415232
-22 0 0 0
-5 0 0 0
-10 0 0 0
-0 0 0 0
-2124973879 2030 559082 2124972032
-31 0 0 0
-3064044860 4294964090 4294021994 3064041472
-3446135222 4294966482 4294431958 3446132736
-2707076791 4294965772 4294621716 2707075072
-331223995 2342 923962 331223040
-4294967295 4294967294 4294967294 4294963200
-4034114843 4294965002 4294164230 4034113536
-27 0 0 0
-1672639659 3624 163386 1672638464
-128023248 2164 94330 128020480
-0 0 0 0
-0 0 0 0
-397472144 2402 63866 397471744
-2425500511 4294963462 4294064392 2425499648
-28 0 0 0
-4294967295 4294967294 4294967294 4294963200
-1104831407 3078 683036 1104830464
-3854309955 4294964820 4294712922 3854307328
-2822241539 4294963866 4294441602 2822238208
-1944235056 1848 173886 1944231936
-4094088927 4294967116 4294367040 4094087168
-2147483648 4294963200 4293918720 2147483648
-1893439809 1810 761612 1893437440
-2675844718 4294963692 4294846966 2675843072
-4021398247 4294967028 4294029050 4021395456
-3799068121 4294966842 4293996070 3799064576
-0 0 0 0
-1918132011 1854 286500 1918128128
-4294967295 4294967294 4294967294 4294963200
-3 0 0 0
-1225117674 3230 378000 1225113600
-3683459883 4294964646 4294780344 3683459072
-88281575 2114 200788 88281088
-2147483648 4294963200 4293918720 2147483648
-11 0 0 0
-0 0 0 0
-1717915857 3680 349798 1717915648
-2 0 0 0
-1630091278 1552 603666 1630089216
-2147483647 4094 1048574 2147479552
-716483292 2740 305834 716480512
-5 0 0 0
-3648939373 4294964618 4294864278 3648937984
-14 0 0 0
-2949048479 4294966000 4294370044 2949046272
-979128329 928 809892 979128320
-10 0 0 0
-23 0 0 0
-3707097864 4294964678 4294303182 3707097088
-2147483647 4094 1048574 2147479552
-18 0 0 0
-3706894179 4294964686 4294098382 3706892288
-283522080 264 405774 283521024
-1564558964 1484 83412 1564557312
-4294967295 4294967294 4294967294 4294963200
-23 0 0 0
-1893205915 3854 528140 1893203968
-0 0 0 0
-3 0 0 0
-8 0 0 0
-3121978284 4294966198 4294286240 3121975296
-2469494517 4294965564 4294015282 2469490688
-0 0 0 0
-4 0 0 0
-4294967295 4294967294 4294967294 4294963200
-5 0 0 0
-16 0 0 0
-31888502 8 430110 31887360
-2147483647 4094 1048574 2147479552
-1829126741 1732 411344 1829126144
-4129208927 4294965108 4294885216 4129206272
-7 0 0 0
-3663941710 4294964640 4294137254 3663941632
-2420395390 4294963482 4294197508 2420391936
-2656201544 4294963702 4294076900 2656198656
-4294967295 4294967294 4294967294 4294963200
-7 0 0 0
-2147483648 4294963200 4293918720 2147483648
-1234317008 3228 142488 1234313216
-28 0 0 0
-3612072338 4294966642 4294694260 3612069888
-3040330294 4294964036 4294429522 3040329728
-4005137602 4294967032 4294545130 4005134336
-717996534 2722 770732 717996032
-3672805735 4294964642 4294612398 3672805376
-3 0 0 0
-3485382593 4294966510 4294884602 3485380608
-1704196632 1620 261720 1704194048
-2147483648 4294963200 4293918720 2147483648
-28 0 0 0
-924731634 2928 936816 924729344
-4294967295 4294967294 4294967294 4294963200
-2147483647 4094 1048574 2147479552
-0 0 0 0
-2147483648 4294963200 4293918720 2147483648
-944927470 2948 162692 944926720
-0 0 0 0
-18 0 0 0
-503129728 2508 862686 503128064
-2565426690 4294963612 4294525326 2565423104
-0 0 0 0
-2149067302 4294963220 4294453248 2149064704
-13 0 0 0
-21 0 0 0
-298579040 264 782620 298577920
-2147483648 4294963200 4293918720 2147483648
-19 0 0 0
-2980591619 4294963984 4294456090 2980589568
-751971469 2776 142028 751968256
-2147483647 4094 1048574 2147479552
-2147483647 4094 1048574 2147479552
-2036640605 1942 305046 2036637696
-2890565324 4294965964 4294607556 2890563584
-3497429321 4294964498 4294348038 3497426944
-85103006 2114 170064 85102592
-644885540 632 10854 644882432
-7 0 0 0
-16 0 0 0
-2883873838 4294963896 4294206142 2883870720
-2864480677 4294965922 4294740650 2864480256
-1433855965 3406 453974 1433853952
-328441537 2364 235832 328437760</dataString></testData></entry></elementAttributes><pos x="100" y="320"/></visualElement>
+Do not rename, move or delete the input and output pins.</string>
+        </entry>
+      </elementAttributes>
+      <pos x="20" y="-60"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>instr</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
+      </elementAttributes>
+      <pos x="0" y="0"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>imm_b</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="0"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>imm_j</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>imm_u</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="80"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>32</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>7,1,4,8,1,4,6,1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="60" y="200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i7</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i11_8</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i19_12</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i20</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i24_21</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="300"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i30_25</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>1,4,6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>32</string>
+        </entry>
+      </elementAttributes>
+      <pos x="400" y="400"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Ground</elementName>
+      <elementAttributes/>
+      <pos x="340" y="400"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i11_8</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="420"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i30_25</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="440"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i7</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="460"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="480"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="520"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="540"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="560"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="580"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="600"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="620"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="640"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="660"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="680"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="700"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="720"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="740"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="760"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="780"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="800"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="820"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="840"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="860"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>1,4,6,1,8,1,1,1,1,1,1,1,1,1,1,1,1</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>32</string>
+        </entry>
+      </elementAttributes>
+      <pos x="400" y="960"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Ground</elementName>
+      <elementAttributes/>
+      <pos x="340" y="960"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i24_21</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="980"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i30_25</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1000"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i20</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1020"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i19_12</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1040"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1060"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1080"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1100"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>12,8,1,4,6,1</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>32</string>
+        </entry>
+      </elementAttributes>
+      <pos x="400" y="1400"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Value</string>
+          <long>0</long>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>12</int>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1400"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i19_12</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1420"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i20</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1440"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i24_21</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1460"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i30_25</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1480"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>i31</string>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="1500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>public tests</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>instr imm_b imm_j imm_u
+0x00000000 0x00000000 0x00000000 0x00000000
+0xFFFFFFFF 0xFFFFFFFE 0xFFFFFFFE 0xFFFFF000
+0x80000000 0xFFFFF000 0xFFF00000 0x80000000
+0x00000FFF 0x0000081E 0x00000000 0x00000000
+0xFFFFF000 0xFFFFF7E0 0xFFFFFFFE 0xFFFFF000
+0x00208063 0x00000000 0x00008002 0x00208000
+0xFE000EE3 0xFFFFFFFC 0xFFF007E0 0xFE000000
+0x008000EF 0x00000800 0x00000008 0x00800000
+0xFFDFF0EF 0xFFFFFFE0 0xFFFFFFFC 0xFFDFF000
+0x123450B7 0x00000920 0x00045922 0x12345000
+0xFFFFF0B7 0xFFFFFFE0 0xFFFFFFFE 0xFFFFF000
+0xAD581E57 0xFFFFF2DC 0xFFF81AD4 0xAD581000
+0x0B12AE6E 0x000000BC 0x0002A8B0 0x0B12A000
+0xC8EFF346 0xFFFFF486 0xFFFFF48E 0xC8EFF000
+0xE539A78B 0xFFFFFE4E 0xFFF9AE52 0xE539A000
+0x853D452F 0xFFFFF04A 0xFFFD4852 0x853D4000
+0x1EE57012 0x000001E0 0x000571EE 0x1EE57000
+0x82F11EC0 0xFFFFF83C 0xFFF1182E 0x82F11000
+0x331241A9 0x00000B22 0x00024B30 0x33124000
+0x64BEB012 0x00000640 0x000EBE4A 0x64BEB000
+0x58E00E8C 0x00000D9C 0x0000058E 0x58E00000
+0xFF2F6504 0xFFFFF7EA 0xFFFF67F2 0xFF2F6000
+0x877994AF 0xFFFFF868 0xFFF99876 0x87799000
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="700" y="200"/>
+    </visualElement>
   </visualElements>
-  <wires/>
+  <wires>
+    <wire>
+      <p1 x="0" y="0"/>
+      <p2 x="0" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="0" y="200"/>
+      <p2 x="60" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="220"/>
+      <p2 x="120" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="240"/>
+      <p2 x="120" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="260"/>
+      <p2 x="120" y="260"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="280"/>
+      <p2 x="120" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="300"/>
+      <p2 x="120" y="300"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="320"/>
+      <p2 x="120" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="340"/>
+      <p2 x="120" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="400"/>
+      <p2 x="400" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="420"/>
+      <p2 x="400" y="420"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="440"/>
+      <p2 x="400" y="440"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="460"/>
+      <p2 x="400" y="460"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="480"/>
+      <p2 x="400" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="500"/>
+      <p2 x="400" y="500"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="520"/>
+      <p2 x="400" y="520"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="540"/>
+      <p2 x="400" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="560"/>
+      <p2 x="400" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="580"/>
+      <p2 x="400" y="580"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="600"/>
+      <p2 x="400" y="600"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="620"/>
+      <p2 x="400" y="620"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="640"/>
+      <p2 x="400" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="660"/>
+      <p2 x="400" y="660"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="680"/>
+      <p2 x="400" y="680"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="700"/>
+      <p2 x="400" y="700"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="720"/>
+      <p2 x="400" y="720"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="740"/>
+      <p2 x="400" y="740"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="760"/>
+      <p2 x="400" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="780"/>
+      <p2 x="400" y="780"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="800"/>
+      <p2 x="400" y="800"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="820"/>
+      <p2 x="400" y="820"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="840"/>
+      <p2 x="400" y="840"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="860"/>
+      <p2 x="400" y="860"/>
+    </wire>
+    <wire>
+      <p1 x="420" y="400"/>
+      <p2 x="480" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="480" y="400"/>
+      <p2 x="480" y="0"/>
+    </wire>
+    <wire>
+      <p1 x="480" y="0"/>
+      <p2 x="560" y="0"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="960"/>
+      <p2 x="400" y="960"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="980"/>
+      <p2 x="400" y="980"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1000"/>
+      <p2 x="400" y="1000"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1020"/>
+      <p2 x="400" y="1020"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1040"/>
+      <p2 x="400" y="1040"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1060"/>
+      <p2 x="400" y="1060"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1080"/>
+      <p2 x="400" y="1080"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1100"/>
+      <p2 x="400" y="1100"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1120"/>
+      <p2 x="400" y="1120"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1140"/>
+      <p2 x="400" y="1140"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1160"/>
+      <p2 x="400" y="1160"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1180"/>
+      <p2 x="400" y="1180"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1200"/>
+      <p2 x="400" y="1200"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1220"/>
+      <p2 x="400" y="1220"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1240"/>
+      <p2 x="400" y="1240"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1260"/>
+      <p2 x="400" y="1260"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1280"/>
+      <p2 x="400" y="1280"/>
+    </wire>
+    <wire>
+      <p1 x="420" y="960"/>
+      <p2 x="500" y="960"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="960"/>
+      <p2 x="500" y="40"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="40"/>
+      <p2 x="560" y="40"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1400"/>
+      <p2 x="400" y="1400"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1420"/>
+      <p2 x="400" y="1420"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1440"/>
+      <p2 x="400" y="1440"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1460"/>
+      <p2 x="400" y="1460"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1480"/>
+      <p2 x="400" y="1480"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="1500"/>
+      <p2 x="400" y="1500"/>
+    </wire>
+    <wire>
+      <p1 x="420" y="1400"/>
+      <p2 x="520" y="1400"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="1400"/>
+      <p2 x="520" y="80"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="80"/>
+      <p2 x="560" y="80"/>
+    </wire>
+  </wires>
   <measurementOrdering/>
 </circuit>
