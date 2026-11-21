@@ -6,9 +6,23 @@ module p09_branch_cmp (
     input  wire [31:0] a,
     input  wire [31:0] b,
     input  wire [2:0] funct3,
-    output wire take
+    output reg take
 );
 
-    assign take = 1'd0;   // placeholder
+    wire eq  = (a == b);
+    wire lt  = ($signed(a) < $signed(b));
+    wire ltu = (a < b);
+
+    always @(*) begin
+        case (funct3)
+            3'd0: take = eq;    // BEQ
+            3'd1: take = ~eq;   // BNE
+            3'd4: take = lt;    // BLT
+            3'd5: take = ~lt;   // BGE
+            3'd6: take = ltu;   // BLTU
+            3'd7: take = ~ltu;  // BGEU
+            default: take = 1'b0;
+        endcase
+    end
 
 endmodule
